@@ -1,0 +1,37 @@
+version: '3'
+# services
+services:
+  
+  # Symfony service to provide api
+  php-prova:
+    container_name: php-prova
+    image: webdevops/php-nginx-dev:7.3
+    working_dir: /var/www/app
+    volumes:
+      - .:/var/www/app
+    environment:
+      - WEB_DOCUMENT_ROOT=/var/www/app/public
+      - WEB_DOCUMENT_INDEX=index.php
+      - PHP_MAX_EXECUTION_TIME=86400
+      # - PHP_DEBUGGER=xdebug
+      # - XDEBUG_REMOTE_PORT=9000
+      # - XDEBUG_REMOTE_AUTOSTART=on
+      # - XDEBUG_REMOTE_CONNECT_BACK=on
+      # - XDEBUG_REMOTE_HOST=${XDEBUG_REMOTE_HOST}
+    ports:
+      - 8080:80
+    links:
+      - mysql-prova
+
+  mysql-prova:
+    container_name: mysql-prova
+    image: mysql:5.7
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - '3307:3306'  
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=prova
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=123.456
