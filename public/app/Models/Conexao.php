@@ -8,7 +8,7 @@ Class Conexao
         }
         private static function getEnv()
         {
-            $envPath = realpath(dirname(__FILE__) . '/../env.ini');
+            $envPath = __DIR__ . '/../env.ini';
             $env = parse_ini_file($envPath);
             return $env;
         }

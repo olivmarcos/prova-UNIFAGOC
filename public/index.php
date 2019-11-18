@@ -1,3 +1,3 @@
 <?php
 
-echo '<h1>Prova</h1>';
+require_once('app/index.php');
