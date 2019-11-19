@@ -1,5 +1,9 @@
 <?php
+
 namespace Dao;
+use Model\AtividadeExtensaoModel;
+use Model\Conexao;
+use PDO;
 
 class AtividadeExtensaoDao {
 
@@ -11,14 +15,20 @@ class AtividadeExtensaoDao {
         $this->con = Conexao::getInstance();
     }
 
-    public function save(AlunoModel $aluno)
+    public function save(AtividadeExtensaoModel $atividade)
     {
-        $stmt = $this->con->prepare("INSERT INTO TBL_ATIVIDADE_EXTENSAO(aln_nome, aln_sexo, aln_dataNascimento, aln_cpf)"
-        . "VALUES (:nome, :sexo, :dataNascimento, :cpf)");
-        $stmt->bindParam(':nome', $aluno->getNome());
-        $stmt->bindParam(':sexo', $aluno->getSexo());
-        $stmt->bindParam(':dataNascimento', $aluno->getDataNascimento());
-        $stmt->bindParam(':cpf', $aluno->getCpf());
+        $stmt = $this->con->prepare("INSERT INTO TBL_ATIVIDADE_EXTENSAO(ate_titulo, ate_tipo, ate_responsavel, ate_limite_inscricao, ate_local, ate_data, ate_hora, ate_gratuito, ate_valor)"
+        . "VALUES (:titulo, :tipo, :responsavel, :limite, :local, :data, :hora, :gratuito, :valor");
+        $stmt->bindParam(':titulo', $atividade->getTitulo());
+        $stmt->bindParam(':tipo', $atividade->getTipo());
+        $stmt->bindParam(':responsavel', $atividade->getResponsavel());
+        $stmt->bindParam(':limite', $atividade->getLimiteInscricao());
+        $stmt->bindParam(':local', $atividade->getLocal());
+        $stmt->bindParam(':data', $atividade->getData());
+        $stmt->bindParam(':hora', $atividade->getHora());
+        $stmt->bindParam(':gratuito', $atividade->getGratuito());
+        $stmt->bindParam(':valor', $atividade->getValor());
+
         
         if ($stmt->execute())
         {
@@ -30,7 +40,7 @@ class AtividadeExtensaoDao {
 
     public function recoverById($id)
     {
-        $stmt = $this->con->prepare("SELECT * FROM TBL_ATIVIDADE_EXTENSAO WHERE aln_id = :id");
+        $stmt = $this->con->prepare("SELECT * FROM TBL_ATIVIDADE_EXTENSAO WHERE ate_id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -41,23 +51,30 @@ class AtividadeExtensaoDao {
     {
         $stmt = $this->con->prepare("SELECT * FROM TBL_ATIVIDADE_EXTENSAO");
         $stmt->execute();
-        $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $stmt;
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($result);
     }
 
-    public function update(AlunoModel $aluno, $id)
+    public function update(AtividadeExtensaoModel $atividade, $id)
     {
-        $stmt = $this->con->prepare("UPDATE TBL_ATIVIDADE_EXTENSAO SET aln_nome = :name, aln_sexo = :sexo, aln_dataNascimento = :dataNascimento, aln_cpf = :cpf WHERE aln_id = :id");
-        $stmt->bindParam(':name', $aluno->getNome());
-        $stmt->bindParam(':sexo', $aluno->getSexo());
-        $stmt->bindParam(':dataNascimento', $aluno->getDataNascimento());
-        $stmt->bindParam(':cpf', $aluno->getCpf());
+        $stmt = $this->con->prepare("UPDATE TBL_ATIVIDADE_EXTENSAO SET ate_titulo = :titulo, ate_tipo = :tipo, ate_responsavel = :responsavel, ate_limite_inscricao = :limite, ate_local = :local, ate_data = :data, ate_hora = :hora, ate_gratuito = :gratuito, ate_valor = :valor WHERE ate_id = :id");
+        $stmt->bindParam(':titulo', $atividade->getTitulo());
+        $stmt->bindParam(':tipo', $atividade->getTipo());
+        $stmt->bindParam(':responsavel', $atividade->getResponsavel());
+        $stmt->bindParam(':limite', $atividade->getLimiteInscricao());
+        $stmt->bindParam(':local', $atividade->getLocal());
+        $stmt->bindParam(':data', $atividade->getData());
+        $stmt->bindParam(':hora', $atividade->getHora());
+        $stmt->bindParam(':gratuito', $atividade->getGratuito());
+        $stmt->bindParam(':valor', $atividade->getValor());
         $stmt->bindParam(':id', $id);
+
         return $stmt->execute();
     }
+
     public function delete($id)
     {
-        $stmt = $this->con->prepare("DELETE FROM TBL_ATIVIDADE_EXTENSAO WHERE aln_id = :id");
+        $stmt = $this->con->prepare("DELETE FROM TBL_ATIVIDADE_EXTENSAO WHERE ate_id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }

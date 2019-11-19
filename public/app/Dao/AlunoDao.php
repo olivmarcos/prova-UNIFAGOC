@@ -44,8 +44,8 @@ class AlunoDao {
     {
         $stmt = $this->con->prepare("SELECT * FROM TBL_ALUNO");
         $stmt->execute();
-        $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $stmt;
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($result);
     }
 
     public function update(AlunoModel $aluno, $id)
