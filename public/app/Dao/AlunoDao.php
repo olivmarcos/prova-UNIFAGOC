@@ -37,7 +37,7 @@ class AlunoDao {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        print_r($result);
+        return $result;
     }
 
     public function recoverAll()
@@ -45,7 +45,7 @@ class AlunoDao {
         $stmt = $this->con->prepare("SELECT * FROM TBL_ALUNO");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($result);
+        return $result;
     }
 
     public function update(AlunoModel $aluno, $id)

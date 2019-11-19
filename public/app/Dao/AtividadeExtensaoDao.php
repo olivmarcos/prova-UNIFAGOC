@@ -44,7 +44,7 @@ class AtividadeExtensaoDao {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        print_r($result);
+        return $result;
     }
 
     public function recoverAll()
@@ -52,7 +52,7 @@ class AtividadeExtensaoDao {
         $stmt = $this->con->prepare("SELECT * FROM TBL_ATIVIDADE_EXTENSAO");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($result);
+        return $result;
     }
 
     public function update(AtividadeExtensaoModel $atividade, $id)
