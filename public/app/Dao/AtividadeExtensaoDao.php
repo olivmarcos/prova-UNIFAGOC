@@ -1,11 +1,8 @@
 <?php
 namespace Dao;
 
-use Model\AlunoModel;
-use Model\Conexao;
-use PDO;
+class AtividadeExtensaoDao {
 
-class AlunoDao {
 
     private $con;
 
@@ -16,7 +13,7 @@ class AlunoDao {
 
     public function save(AlunoModel $aluno)
     {
-        $stmt = $this->con->prepare("INSERT INTO TBL_ALUNO(aln_nome, aln_sexo, aln_dataNascimento, aln_cpf)"
+        $stmt = $this->con->prepare("INSERT INTO TBL_ATIVIDADE_EXTENSAO(aln_nome, aln_sexo, aln_dataNascimento, aln_cpf)"
         . "VALUES (:nome, :sexo, :dataNascimento, :cpf)");
         $stmt->bindParam(':nome', $aluno->getNome());
         $stmt->bindParam(':sexo', $aluno->getSexo());
@@ -33,7 +30,7 @@ class AlunoDao {
 
     public function recoverById($id)
     {
-        $stmt = $this->con->prepare("SELECT * FROM TBL_ALUNO WHERE aln_id = :id");
+        $stmt = $this->con->prepare("SELECT * FROM TBL_ATIVIDADE_EXTENSAO WHERE aln_id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -42,7 +39,7 @@ class AlunoDao {
 
     public function recoverAll()
     {
-        $stmt = $this->con->prepare("SELECT * FROM TBL_ALUNO");
+        $stmt = $this->con->prepare("SELECT * FROM TBL_ATIVIDADE_EXTENSAO");
         $stmt->execute();
         $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $stmt;
@@ -50,7 +47,7 @@ class AlunoDao {
 
     public function update(AlunoModel $aluno, $id)
     {
-        $stmt = $this->con->prepare("UPDATE TBL_ALUNO SET aln_nome = :name, aln_sexo = :sexo, aln_dataNascimento = :dataNascimento, aln_cpf = :cpf WHERE aln_id = :id");
+        $stmt = $this->con->prepare("UPDATE TBL_ATIVIDADE_EXTENSAO SET aln_nome = :name, aln_sexo = :sexo, aln_dataNascimento = :dataNascimento, aln_cpf = :cpf WHERE aln_id = :id");
         $stmt->bindParam(':name', $aluno->getNome());
         $stmt->bindParam(':sexo', $aluno->getSexo());
         $stmt->bindParam(':dataNascimento', $aluno->getDataNascimento());
@@ -60,7 +57,7 @@ class AlunoDao {
     }
     public function delete($id)
     {
-        $stmt = $this->con->prepare("DELETE FROM TBL_ALUNO WHERE aln_id = :id");
+        $stmt = $this->con->prepare("DELETE FROM TBL_ATIVIDADE_EXTENSAO WHERE aln_id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
