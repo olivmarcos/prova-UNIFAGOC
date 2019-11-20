@@ -58,6 +58,7 @@ class AlunoDao {
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
+    
     public function delete($id)
     {
         $stmt = $this->con->prepare("DELETE FROM TBL_ALUNO WHERE aln_id = :id");
