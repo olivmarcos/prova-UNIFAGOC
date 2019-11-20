@@ -32,12 +32,12 @@ class AlunoController {
 
     public function recoverById($id)
     {
-        $this->AlunoDao->recoverById($id);
+        return $this->AlunoDao->recoverById($id);
     }
 
     public function recoverAll()
     {
-        var_dump($this->AlunoDao->recoverAll());
+        return $this->AlunoDao->recoverAll();
     }
 
     public function update()

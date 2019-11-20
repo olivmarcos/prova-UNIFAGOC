@@ -7,6 +7,7 @@ use Model\AtividadeExtensaoModel;
 class InscricaoModel {
     private $aluno;
     private $atividade;
+    private $dataInscricao;
 
     public function __construct(AlunoModel $aluno, AtividadeExtensaoModel $atividade)
     {
@@ -23,5 +24,4 @@ class InscricaoModel {
     {
         return $this->atividade;
     }
-
 }

@@ -32,7 +32,7 @@ class AtividadeExtensaoController {
 
     public function recoverById($id)
     {
-        $this->AtividadeExtensaoDao->recoverById($id);
+        return $this->AtividadeExtensaoDao->recoverById($id);
     }
 
     public function recoverAll()

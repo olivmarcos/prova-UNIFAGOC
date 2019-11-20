@@ -31,3 +31,18 @@ VALUES ('GAME PARTY', 'Projeto', 'Marcos Oliveira', 500, 'Unifagoc', '2019-12-12
     ('Semana Acadêmica Computação', 'Projeto', 'Carlos Barreto', 250, 'Unifagoc', '2019-12-20', '19:00', 1, 0),
     ('Desenvolvimento Android', 'Curso', 'Sérgio Murillo', 100, 'Unifagoc', '2020-02-12', '08:00', 0, 100.00),
     ('Manutenção de ComputadoresY', 'Curso', 'Joás Wesley', 50, 'Unifagoc', '2020-03-12', '10:00', 1, 0);
+
+CREATE TABLE TBL_INSCRICAO (
+    ins_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    ins_ALN_ID INT(6) UNSIGNED,
+    ins_ATE_ID INT(6) UNSIGNED,
+    CONSTRAINT FK_Aluno FOREIGN KEY (ins_ALN_ID)
+	REFERENCES TBL_ALUNO(aln_id),
+	CONSTRAINT FK_Atividade FOREIGN KEY (ins_ATE_ID)
+	REFERENCES TBL_ATIVIDADE_EXTENSAO(ate_id)
+);
+
+INSERT INTO TBL_INSCRICAO(ins_ALN_ID, ins_ATE_ID)
+VALUES	(1, 1),
+    	(3, 3),
+    	(2, 3);

@@ -43,7 +43,7 @@ class AtividadeExtensaoDao {
         $stmt = $this->con->prepare("SELECT * FROM TBL_ATIVIDADE_EXTENSAO WHERE ate_id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
 
