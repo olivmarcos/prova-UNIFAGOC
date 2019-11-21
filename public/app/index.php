@@ -17,13 +17,13 @@ $atividade = new AtividadeExtensaoController;
 $inscricao = new InscricaoController;
 
 $aln = $aluno->recoverById(8);
-$atv = $atividade->recoverById(7);
+$atv = $atividade->recoverById(3);
 
-// $inscricao->save($aln['aln_id'], $atv['ate_id']);
- $a = $inscricao->verificaCpf('862.7s05.348-01', 3);
+$inscricao->save($aln['aln_id'], $atv['ate_id'], '862.705.348-01');
+//  $a = $inscricao->verificaCpf('862.7s05.348-01', 3);
 
-if ($a){
-    echo 'ok';
-}
-else
-    echo "false";
+// if ($a){
+//     echo 'ok';
+// }
+// else
+//     echo "false";

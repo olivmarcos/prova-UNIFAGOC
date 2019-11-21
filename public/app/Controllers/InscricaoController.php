@@ -13,7 +13,7 @@ class InscricaoController {
         $this->inscricaoDao = new InscricaoDao;
     }
 
-    public function save($alunoId, $atividadeId)
+    public function save($alunoId, $atividadeId, $cpf)
     {
         $inscricao = new InscricaoModel();
         $inscricao->setAlunoId($alunoId);
@@ -21,12 +21,17 @@ class InscricaoController {
 
         if($this->verificaLimite($atividadeId))
         {
-            $this->inscricaoDao->save($inscricao);
-        }
-        else 
-        {
-            echo "O limite de inscrição foi atigindo!";
-        }
+            if (!$this->verificaCpf($cpf, $atividadeId))
+            {
+                $this->inscricaoDao->save($inscricao);
+                return;
+            }
+            echo "CPF já inscrito!";
+            return;
+            
+        } 
+        echo "O limite de inscrição foi atigindo!";
+        return;
     }
 
     public function verificaLimite($atividadeId)
