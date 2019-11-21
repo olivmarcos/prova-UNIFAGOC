@@ -19,13 +19,22 @@ class InscricaoController {
         $inscricao->setAlunoId($alunoId);
         $inscricao->setAtividadeExtensaoId($atividadeId);
 
-        if($this->inscricaoDao->save($inscricao))
+        if($this->verificaLimite($atividadeId))
         {
-            echo 'ok';
+            $this->inscricaoDao->save($inscricao);
         }
-        else
+        else 
         {
-            echo 'not ok';
+            echo "O limite de inscrição foi atigindo!";
         }
+    }
+
+    public function verificaLimite($atividadeId)
+    {
+        $atividade = new AtividadeExtensaoController;
+        $rows = $this->inscricaoDao->verificarLimite($atividadeId);
+        $atv = $atividade->recoverById($atividadeId);
+
+        return ($rows < $atv['ate_limite_inscricao']);/*Verifica se o limite de inscritos na atividade de extensão não foi ultrapassado */
     }
 }

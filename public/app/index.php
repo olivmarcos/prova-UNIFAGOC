@@ -12,8 +12,22 @@ use Dao\InscricaoDao;
 use Model\AlunoModel;
 use Model\InscricaoModel;
 
-$teste = new InscricaoController;
-$teste->save(3, 3);
-
 $aluno = new AlunoController;
-// $aluno->save("Daniela", "Feminino", "1994-04-08", "153.458.478-22");
+$atividade = new AtividadeExtensaoController;
+$inscricao = new InscricaoController;
+
+$aln = $aluno->recoverById(8);
+$atv = $atividade->recoverById(7);
+// echo $atv['ate_limite_inscricao'];
+
+$inscricao->save($aln['aln_id'], $atv['ate_id']);
+
+// $verifica = new InscricaoDao;
+// $verifica->verificarLimite(1);
+
+$tst = new InscricaoController;
+// $tst->verificaLimite(7);
+
+$a = $tst;
+
+// print_r($a);

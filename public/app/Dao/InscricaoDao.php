@@ -17,11 +17,7 @@ class InscricaoDao {
     public function save(InscricaoModel $inscricao)
     {
         $stmt = $this->con->prepare("INSERT INTO TBL_INSCRICAO(ins_ALN_ID, ins_ATE_ID)" .
-        "VALUES (:inscricaoId, :atividadeId)");        
-
-        // $a = $inscricao->getAlunoId();
-        // $b = $inscricao->getAtividadeExtensaoId();
-
+        "VALUES (:inscricaoId, :atividadeId)");
         $stmt->bindParam(':inscricaoId', $inscricao->getAlunoId());
         $stmt->bindParam(':atividadeId',  $inscricao->getAtividadeExtensaoId());
 
@@ -50,6 +46,15 @@ class InscricaoDao {
         $stmt = $this->con->prepare("DELETE FROM TBL_INSCRICAO WHERE aln_id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
+    }
+
+    public function verificarLimite($id)
+    {
+        $stmt = $this->con->prepare("SELECT count(ins_id) FROM TBL_INSCRICAO WHERE ins_ATE_ID = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+        return $result;
     }
 
 }

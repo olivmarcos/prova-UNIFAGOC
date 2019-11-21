@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="87961587-6e51-42d9-9228-1b6be9acac1a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/app/Controllers/AlunoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/app/Controllers/AlunoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Dao/AlunoDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/app/Dao/AlunoDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Dao/AtividadeExtensaoDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/app/Dao/AtividadeExtensaoDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app/Models/InscricaoModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/app/Models/InscricaoModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/app/Dao/InscricaoDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/app/Dao/InscricaoDao.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/app/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/app/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/extras/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/public/extras/db.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +54,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574184220106</updated>
-      <workItem from="1574184221539" duration="3333000" />
+      <workItem from="1574184221539" duration="3933000" />
     </task>
     <servers />
   </component>
