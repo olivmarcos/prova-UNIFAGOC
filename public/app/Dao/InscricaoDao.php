@@ -19,15 +19,13 @@ class InscricaoDao {
         $stmt = $this->con->prepare("INSERT INTO TBL_INSCRICAO(ins_ALN_ID, ins_ATE_ID)" .
         "VALUES (:inscricaoId, :atividadeId)");        
 
-        $stmt->bindParam(':inscricaoId', $inscricao->getAlunoId());
-        $stmt->bindParam(':atividadeId', $$inscricao->getAtividadeExtensaoId());
+        // $a = $inscricao->getAlunoId();
+        // $b = $inscricao->getAtividadeExtensaoId();
 
-        if ($stmt->execute())
-        {
-            echo 'ok';
-        }
-        else
-            echo 'not ok';
+        $stmt->bindParam(':inscricaoId', $inscricao->getAlunoId());
+        $stmt->bindParam(':atividadeId',  $inscricao->getAtividadeExtensaoId());
+
+        return $stmt->execute();
     }
 
     public function recoverById($id)

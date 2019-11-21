@@ -23,12 +23,7 @@ class AlunoDao {
         $stmt->bindParam(':dataNascimento', $aluno->getDataNascimento());
         $stmt->bindParam(':cpf', $aluno->getCpf());
         
-        if ($stmt->execute())
-        {
-            echo 'ok';
-        }
-        else
-            echo 'not ok';
+        return $stmt->execute();
     }
 
     public function recoverById($id)

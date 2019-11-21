@@ -13,7 +13,7 @@ use Model\AlunoModel;
 use Model\InscricaoModel;
 
 $teste = new InscricaoController;
-$teste->save(2, 2);
+$teste->save(3, 3);
 
 $aluno = new AlunoController;
-// $aluno->save("Marly", "Feminino", "1994-04-08", "133.455.478-22");
+// $aluno->save("Daniela", "Feminino", "1994-04-08", "153.458.478-22");
