@@ -13,12 +13,13 @@ class AlunoController {
         $this->AlunoDao = new AlunoDao();
     }
 
-    public function save()
+    public function save($nome, $sexo, $dataNascimento, $cpf)
     {
         $aluno = new alunoModel();
-        $aluno->setName("Teste");
-        $aluno->setBiography("Testando");
-        $aluno->setPhoto("photo.png");
+        $aluno->setNome($nome);
+        $aluno->setSexo($sexo);
+        $aluno->setDataNascimento($dataNascimento);
+        $aluno->setCpf($cpf);
 
          if($this->AlunoDao->save($aluno))
          {

@@ -13,13 +13,15 @@ class InscricaoController {
         $this->inscricaoDao = new InscricaoDao;
     }
 
-    public function save($alunoId, $inscricaoId)
+    public function save($alunoId, $iatividadeId)
     {
         $inscricao = new InscricaoModel();
+        $inscricao->setAlunoId($alunoId);
+        $inscricao->setAtividadeExtensaoId($iatividadeId);
 
         if($this->inscricaoDao->save($inscricao))
         {
-            echo 'ok'
+            echo 'ok';
         }
         else
             echo 'not ok';

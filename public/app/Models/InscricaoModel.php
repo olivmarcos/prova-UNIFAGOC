@@ -9,22 +9,22 @@ class InscricaoModel {
     private $atividadeId;
     private $dataInscricao;
 
-    public function getAluno()
+    public function getAlunoId()
     {
         return $this->alunoId;
     }
 
-    public function setAluno($alunoId)
+    public function setAlunoId($alunoId)
     {
         $this->alunoId = $alunoId;
     }
 
-    public function getAtividadeExtensao()
+    public function getAtividadeExtensaoId()
     {
-        return $this->atividade;
+        return $this->atividadeId;
     }
 
-    public function setAtividadeExtensao($atividadeId)
+    public function setAtividadeExtensaoId($atividadeId)
     {
         $this->atividadeId = $atividadeId;
     }

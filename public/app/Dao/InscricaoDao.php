@@ -19,8 +19,8 @@ class InscricaoDao {
         $stmt = $this->con->prepare("INSERT INTO TBL_INSCRICAO(ins_ALN_ID, ins_ATE_ID)" .
         "VALUES (:inscricaoId, :atividadeId)");        
 
-        $stmt->bindParam(':inscricaoId', $inscricao->getAluno());
-        $stmt->bindParam(':atividadeId', $$inscricao->getAtividadeExtensao());
+        $stmt->bindParam(':inscricaoId', $inscricao->getAlunoId());
+        $stmt->bindParam(':atividadeId', $$inscricao->getAtividadeExtensaoId());
 
         if ($stmt->execute())
         {

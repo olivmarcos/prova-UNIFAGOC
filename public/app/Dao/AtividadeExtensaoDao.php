@@ -28,7 +28,6 @@ class AtividadeExtensaoDao {
         $stmt->bindParam(':hora', $atividade->getHora());
         $stmt->bindParam(':gratuito', $atividade->getGratuito());
         $stmt->bindParam(':valor', $atividade->getValor());
-
         
         if ($stmt->execute())
         {

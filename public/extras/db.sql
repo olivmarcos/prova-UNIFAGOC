@@ -3,7 +3,7 @@ CREATE TABLE TBL_ALUNO (
     aln_nome VARCHAR(150) NOT NULL,
     aln_sexo VARCHAR(10),
     aln_dataNascimento DATE,
-    aln_cpf VARCHAR(11) UNIQUE
+    aln_cpf VARCHAR(15) UNIQUE
 );
 
 INSERT INTO TBL_ALUNO (aln_nome, aln_sexo, aln_dataNascimento, aln_cpf)
