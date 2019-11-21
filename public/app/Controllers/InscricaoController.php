@@ -37,4 +37,16 @@ class InscricaoController {
 
         return ($rows < $atv['ate_limite_inscricao']);/*Verifica se o limite de inscritos na atividade de extensão não foi ultrapassado */
     }
+
+    public function verificaCpf($cpf)
+    {
+        $alunos = new AlunoController;
+        $tst = $alunos->recoverAll();
+        foreach ($tst as $key) {
+            if(strcmp($key['aln_cpf'], $cpf) == 0){
+                return true;
+            }
+        }
+        return false;
+    }
 }

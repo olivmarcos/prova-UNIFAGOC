@@ -18,16 +18,12 @@ $inscricao = new InscricaoController;
 
 $aln = $aluno->recoverById(8);
 $atv = $atividade->recoverById(7);
-// echo $atv['ate_limite_inscricao'];
 
-$inscricao->save($aln['aln_id'], $atv['ate_id']);
+// $inscricao->save($aln['aln_id'], $atv['ate_id']);
+ $a = $inscricao->verificaCpf('272.843552-98');
 
-// $verifica = new InscricaoDao;
-// $verifica->verificarLimite(1);
-
-$tst = new InscricaoController;
-// $tst->verificaLimite(7);
-
-$a = $tst;
-
-// print_r($a);
+if ($a){
+    echo 'ok';
+}
+else
+    echo "false";

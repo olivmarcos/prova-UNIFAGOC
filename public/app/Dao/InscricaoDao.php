@@ -57,4 +57,6 @@ class InscricaoDao {
         return $result;
     }
 
+    
+
 }
