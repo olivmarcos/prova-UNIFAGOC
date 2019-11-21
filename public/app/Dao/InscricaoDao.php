@@ -57,6 +57,12 @@ class InscricaoDao {
         return $result;
     }
 
-    
-
+    public function verificarCpf($id)
+    {
+        $stmt = $this->con->prepare("SELECT aln_cpf FROM TBL_INSCRICAO JOIN TBL_ALUNO TA ON TBL_INSCRICAO.ins_ALN_ID = TA.aln_id WHERE ins_ATE_ID = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

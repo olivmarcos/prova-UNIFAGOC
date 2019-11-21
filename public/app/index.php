@@ -20,7 +20,7 @@ $aln = $aluno->recoverById(8);
 $atv = $atividade->recoverById(7);
 
 // $inscricao->save($aln['aln_id'], $atv['ate_id']);
- $a = $inscricao->verificaCpf('272.843552-98');
+ $a = $inscricao->verificaCpf('862.7s05.348-01', 3);
 
 if ($a){
     echo 'ok';

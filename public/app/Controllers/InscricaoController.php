@@ -34,16 +34,14 @@ class InscricaoController {
         $atividade = new AtividadeExtensaoController;
         $rows = $this->inscricaoDao->verificarLimite($atividadeId);
         $atv = $atividade->recoverById($atividadeId);
-
         return ($rows < $atv['ate_limite_inscricao']);/*Verifica se o limite de inscritos na atividade de extensão não foi ultrapassado */
     }
 
-    public function verificaCpf($cpf)
+    public function verificaCpf($cpf, $id)
     {
-        $alunos = new AlunoController;
-        $tst = $alunos->recoverAll();
-        foreach ($tst as $key) {
-            if(strcmp($key['aln_cpf'], $cpf) == 0){
+        $cpfs = $this->inscricaoDao->verificarCpf($id);
+        foreach ($cpfs as $value) {
+            if(strcmp($value['aln_cpf'], $cpf) == 0){
                 return true;
             }
         }
