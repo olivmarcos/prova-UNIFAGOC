@@ -11,19 +11,37 @@ use Controller\InscricaoController;
 use Dao\InscricaoDao;
 use Model\AlunoModel;
 use Model\InscricaoModel;
+use Exception;
 
 $aluno = new AlunoController;
 $atividade = new AtividadeExtensaoController;
 $inscricao = new InscricaoController;
 
-$aln = $aluno->recoverById(8);
-$atv = $atividade->recoverById(3);
+$aln = $aluno->recoverById(6);
+$atv = $atividade->recoverById(5);
 
-$inscricao->save($aln['aln_id'], $atv['ate_id'], '862.705.348-01');
-//  $a = $inscricao->verificaCpf('862.7s05.348-01', 3);
+// $inscricao->save($aln['aln_id'], $atv['ate_id'], $aln['aln_cpf']);
 
-// if ($a){
-//     echo 'ok';
-// }
-// else
-//     echo "false";
+// $atiEx = new AtividadeExtensaoModel;
+
+// $atiEx->setTitulo("que");
+// $atiEx->setTipo("Projeto");
+
+// var_dump($atiEx);
+
+use CoffeeCode\Router\Router;
+
+$router = new Router("http://localhost:8080");
+
+
+// $router->get('/', function($data){
+//     echo "Hello World";
+//     var_dump($data);
+// });
+
+$router->namespace("Controller");
+// $router->group(null);
+
+$router->get('/', 'AlunoController:recoverAll');
+
+$router->dispatch();

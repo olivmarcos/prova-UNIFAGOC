@@ -24,6 +24,7 @@ class InscricaoController {
             if (!$this->verificaCpf($cpf, $atividadeId))
             {
                 $this->inscricaoDao->save($inscricao);
+                echo "Registro realizado com sucesso";
                 return;
             }
             echo "CPF já inscrito!";

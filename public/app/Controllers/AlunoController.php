@@ -38,7 +38,8 @@ class AlunoController {
 
     public function recoverAll()
     {
-        return $this->AlunoDao->recoverAll();
+        $teste =  $this->AlunoDao->recoverAll();
+        var_dump($teste);
     }
 
     public function update()
@@ -63,5 +64,10 @@ class AlunoController {
     public function delete($id)
     {
         $this->AlunoDao->delete($id);
+    }
+
+    public function hello()
+    {
+        echo "hello wsdorld";
     }
 }

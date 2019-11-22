@@ -43,6 +43,11 @@ class AtividadeExtensaoModel {
     public function setTipo($tipo)
     {
         $this->tipo = $tipo;
+        if(strcmp($this->tipo, "Projeto") == 0)
+        {
+            $this->setGratuito(1);
+            $this->setValor(0);
+        }
     }
 
     /**
@@ -157,5 +162,4 @@ class AtividadeExtensaoModel {
         $this->valor = $valor;
     }
 
-    
 }
