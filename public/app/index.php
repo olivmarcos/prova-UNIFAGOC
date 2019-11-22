@@ -20,37 +20,24 @@ $inscricao = new InscricaoController;
 $aln = $aluno->recoverById(3);
 $atv = $atividade->recoverById(5);
 
-// $inscricao->save($aln['aln_id'], $atv['ate_id'], $aln['aln_cpf']);
-/*
-$content = http_build_query(array(
-    'cpf' => '123.456.789-00',
-    'valor' => '12345',
-    'vencimento' => '2019-01-01',
-    ));
-    
-$context = stream_context_create(array(
-    'http' => array(
-    'method' => 'POST',
-    'content' => $content,
-    )));
-    
-$result = file_get_contents('http://prova-dev-unifagoc.herokuapp.com/api/v1', null, $context);
+$data = array("cpf" => "123.456.789-00", "valor" => "12345", "vencimento" => "2020-01-01");
+$data_string = json_encode($data);
 
-var_dump($result);*/
+$ch = curl_init('https://prova-dev-unifagoc.herokuapp.com/api/v1/boleto');
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Content-Length: ' . strlen($data_string))
+);
+curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 
-$curl = curl_init();
+//execute post
+$result = curl_exec($ch);
 
-curl_setopt_array($curl, [
-    CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_URL => 'http//prova-dev-unifagoc.herokuapp.com/api/v1/boleto',
-    CURLOPT_POST => 1,
-    CURLOPT_POSTFIELDS => [
-        'cpf' => '123.456.789-22',
-        'valor' => '12345',
-        'vencimento' => '2019-01-01'
-    ]
-]);
+//close connection
+curl_close($ch);
 
-$a = $responde = curl_exec($curl);
-var_dump($a);
-curl_close($curl);
+echo $result;
