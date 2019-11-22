@@ -17,31 +17,23 @@ $aluno = new AlunoController;
 $atividade = new AtividadeExtensaoController;
 $inscricao = new InscricaoController;
 
-$aln = $aluno->recoverById(6);
+$aln = $aluno->recoverById(3);
 $atv = $atividade->recoverById(5);
 
 // $inscricao->save($aln['aln_id'], $atv['ate_id'], $aln['aln_cpf']);
 
-// $atiEx = new AtividadeExtensaoModel;
+$content = http_build_query(array(
+    'cpf' => '123.456.789-00',
+    'valor' => '12345',
+    'vencimento' => '2019-01-01',
+    ));
+    
+$context = stream_context_create(array(
+    'http' => array(
+    'method' => 'POST',
+    'content' => $content,
+    )));
+    
+$result = file_get_contents('http://prova-dev-unifagoc.herokuapp.com/api/v1', null, $context);
 
-// $atiEx->setTitulo("que");
-// $atiEx->setTipo("Projeto");
-
-// var_dump($atiEx);
-
-use CoffeeCode\Router\Router;
-
-$router = new Router("http://localhost:8080");
-
-
-// $router->get('/', function($data){
-//     echo "Hello World";
-//     var_dump($data);
-// });
-
-$router->namespace("Controller");
-// $router->group(null);
-
-$router->get('/', 'AlunoController:recoverAll');
-
-$router->dispatch();
+var_dump($result);
