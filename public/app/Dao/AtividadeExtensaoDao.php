@@ -7,7 +7,6 @@ use PDO;
 
 class AtividadeExtensaoDao {
 
-
     private $con;
 
     public function __construct()
@@ -29,12 +28,7 @@ class AtividadeExtensaoDao {
         $stmt->bindParam(':gratuito', $atividade->getGratuito());
         $stmt->bindParam(':valor', $atividade->getValor());
         
-        if ($stmt->execute())
-        {
-            echo 'ok';
-        }
-        else
-            echo 'not ok';
+        return $stmt->execute();
     }
 
     public function recoverById($id)

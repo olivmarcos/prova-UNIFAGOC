@@ -8,6 +8,7 @@ use Dao\AlunoDao;
 use Model\AtividadeExtensaoModel;
 use Controller\AtividadeExtensaoController;
 use Controller\InscricaoController;
+use Dao\ConstasReceberDao;
 use Dao\InscricaoDao;
 use Model\AlunoModel;
 use Model\InscricaoModel;
@@ -45,4 +46,9 @@ curl_close($ch);
 $gratuito = new InscricaoController;
 $a = $gratuito->verificaGratuidade(3);
 
-var_dump($a);
+// var_dump($a);
+
+$contas = new ConstasReceberDao;
+
+$contas->save("sds54d45s5", '2019-1-12', 'asasa', 3, 20);
+

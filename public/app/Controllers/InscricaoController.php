@@ -58,13 +58,11 @@ class InscricaoController {
     {
         $atividade = new AtividadeExtensaoController;
         $atv = $atividade->recoverById(3);
-        if($atv['ate_gratuito'] == 1)
-        {
-            echo 'ok';
-        }
-        else
-        {
-            echo "not ok";
-        }
+        return ($atv['ate_gratuito'] == 1);
+    }
+
+    public function geraBoleto()
+    {
+        
     }
 }

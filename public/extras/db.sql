@@ -46,3 +46,15 @@ INSERT INTO TBL_INSCRICAO(ins_ALN_ID, ins_ATE_ID)
 VALUES	(1, 1),
     	(3, 3),
     	(2, 3);
+
+CREATE TABLE TBL_CONTAS_RECEBER (
+    ctr_id INT(6) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    ctr_boleto TEXT,
+    ctr_valor DECIMAL(5, 2),
+    ctr_dataVencimento DATE,
+    ctr_descricao VARCHAR(250),
+	ctr_INS_ID INT(6) UNSIGNED,
+
+	CONSTRAINT FK_inscricao FOREIGN KEY (ctr_INS_ID)
+	REFERENCES TBL_INSCRICAO(ins_id)
+);
