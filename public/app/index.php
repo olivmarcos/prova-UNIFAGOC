@@ -21,7 +21,7 @@ $aln = $aluno->recoverById(3);
 $atv = $atividade->recoverById(5);
 
 // $inscricao->save($aln['aln_id'], $atv['ate_id'], $aln['aln_cpf']);
-
+/*
 $content = http_build_query(array(
     'cpf' => '123.456.789-00',
     'valor' => '12345',
@@ -36,4 +36,21 @@ $context = stream_context_create(array(
     
 $result = file_get_contents('http://prova-dev-unifagoc.herokuapp.com/api/v1', null, $context);
 
-var_dump($result);
+var_dump($result);*/
+
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => 'http//prova-dev-unifagoc.herokuapp.com/api/v1/boleto',
+    CURLOPT_POST => 1,
+    CURLOPT_POSTFIELDS => [
+        'cpf' => '123.456.789-22',
+        'valor' => '12345',
+        'vencimento' => '2019-01-01'
+    ]
+]);
+
+$a = $responde = curl_exec($curl);
+var_dump($a);
+curl_close($curl);
