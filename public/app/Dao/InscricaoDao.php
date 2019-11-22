@@ -65,4 +65,14 @@ class InscricaoDao {
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    // public function verificaGratuidade($id)
+    // {
+    //     $stmt = $this->con->prepare("SELECT ate_gratuito FROM TBL_ATIVIDADE_EXTENSAO WHERE ate_id = :id");
+    //     $stmt->bindParam(':id', $id);
+    //     $stmt->execute();
+    //     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    //     return $result;
+    // }   
+    
 }

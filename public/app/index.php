@@ -40,4 +40,9 @@ $result = curl_exec($ch);
 //close connection
 curl_close($ch);
 
-echo $result;
+// echo $result;
+
+$gratuito = new InscricaoController;
+$a = $gratuito->verificaGratuidade(3);
+
+var_dump($a);

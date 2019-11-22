@@ -47,10 +47,24 @@ class InscricaoController {
     {
         $cpfs = $this->inscricaoDao->verificarCpf($id);
         foreach ($cpfs as $value) {
-            if(strcmp($value['aln_cpf'], $cpf) == 0){
+            if(strcmp($value['aln_cpf'], $cpf) == 0){ 
                 return true;
             }
         }
         return false;
+    }
+
+    public function verificaGratuidade()
+    {
+        $atividade = new AtividadeExtensaoController;
+        $atv = $atividade->recoverById(3);
+        if($atv['ate_gratuito'] == 1)
+        {
+            echo 'ok';
+        }
+        else
+        {
+            echo "not ok";
+        }
     }
 }
