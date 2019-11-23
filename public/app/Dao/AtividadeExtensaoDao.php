@@ -27,7 +27,6 @@ class AtividadeExtensaoDao {
         $stmt->bindParam(':hora', $atividade->getHora());
         $stmt->bindParam(':gratuito', $atividade->getGratuito());
         $stmt->bindParam(':valor', $atividade->getValor());
-        
         return $stmt->execute();
     }
 
@@ -61,7 +60,6 @@ class AtividadeExtensaoDao {
         $stmt->bindParam(':gratuito', $atividade->getGratuito());
         $stmt->bindParam(':valor', $atividade->getValor());
         $stmt->bindParam(':id', $id);
-
         return $stmt->execute();
     }
 
@@ -69,6 +67,6 @@ class AtividadeExtensaoDao {
     {
         $stmt = $this->con->prepare("DELETE FROM TBL_ATIVIDADE_EXTENSAO WHERE ate_id = :id");
         $stmt->bindParam(':id', $id);
-        $stmt->execute();
+        return $stmt->execute();
     }
 }

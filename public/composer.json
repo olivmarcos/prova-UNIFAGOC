@@ -5,6 +5,5 @@
             "Controller\\": "app/Controllers/",
             "Dao\\": "app/Dao/"
         }
-    },
-    "require": {"coffeecode/router": "^1.0"}
+    }
 }

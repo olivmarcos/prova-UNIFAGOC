@@ -20,13 +20,12 @@ class InscricaoDao {
         "VALUES (:inscricaoId, :atividadeId)");
         $stmt->bindParam(':inscricaoId', $inscricao->getAlunoId());
         $stmt->bindParam(':atividadeId',  $inscricao->getAtividadeExtensaoId());
-
         return $stmt->execute();
     }
 
     public function recoverById($id)
     {
-        $stmt = $this->con->prepare("SELECT * FROM TBL_INSCRICAO WHERE ate_id = :id");
+        $stmt = $this->con->prepare("SELECT * FROM TBL_INSCRICAO WHERE ins_id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -43,7 +42,7 @@ class InscricaoDao {
 
     public function delete($id)
     {
-        $stmt = $this->con->prepare("DELETE FROM TBL_INSCRICAO WHERE aln_id = :id");
+        $stmt = $this->con->prepare("DELETE FROM TBL_INSCRICAO WHERE ins_id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }

@@ -7,7 +7,6 @@ use Model\AtividadeExtensaoModel;
 class InscricaoModel {
     private $alunoId;
     private $atividadeId;
-    private $dataInscricao;
 
     public function getAlunoId()
     {

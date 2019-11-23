@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Alata&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Alata', sans-serif;
+}
+
+header {
+    font-size: 2rem;
+    background-color: seagreen;
+    color: white;
+    padding: 2rem;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+}
+
+.container {
+    margin-top: 3rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sections {
+    margin-bottom: 1rem;
+}
+
+.label {
+    font-size: 1.5rem;
+}
+
+input {
+    width: 25rem;
+    height: 2rem;
+    margin-top: .5rem;
+}
+
+button {
+    font-size: 1rem;
+    padding: .5rem;
+    color: white;
+    background-color: seagreen;
+}
+
+select {
+    width: 25rem;
+    height: 2rem;
+    background-color: white;
+    font-size: 1rem;
+    margin: .5rem 0 .5rem 0;
+}
+
+#checkbox {
+    font-size: .5rem;
+    width: 2rem;
+    height: 1rem;
+}
+
+.main {
+    margin-bottom: 1rem;
+}

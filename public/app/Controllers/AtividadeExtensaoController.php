@@ -13,21 +13,9 @@ class AtividadeExtensaoController {
         $this->AtividadeExtensaoDao = new AtividadeExtensaoDao();
     }
 
-    public function save()
+    public function save(AtividadeExtensaoModel $atividade)
     {
-        $aluno = new AtividadeExtensaoModel();
-        $aluno->setName("Teste");
-        $aluno->setBiography("Testando");
-        $aluno->setPhoto("photo.png");
-
-         if($this->AtividadeExtensaoDao->save($aluno))
-         {
-             echo "ok";
-         }
-         else
-         {
-             echo "not ok";
-         }
+        return $this->AtividadeExtensaoDao->save($atividade);
     }
 
     public function recoverById($id)
@@ -40,23 +28,9 @@ class AtividadeExtensaoController {
         var_dump($this->AtividadeExtensaoDao->recoverAll());
     }
 
-    public function update()
+    public function update(AtividadeExtensaoModel $atividade, $id)
     {
-        $aluno = new AtividadeExtensaoModel();
-        $aluno->setNome("Teste56454");
-        $aluno->setSexo("Indefinido");
-        $aluno->setDataNascimento("2019-02-02");
-        $aluno->setCpf("1258795");
-        $id = 5;
-
-        if($this->AtividadeExtensaoDao->update($aluno, $id))
-        {
-            echo "ok";
-        }
-        else
-        {
-            echo "not ok";
-        }
+        return $this->AtividadeExtensaoDao->update($atividade, $id);
     }
 
     public function delete($id)

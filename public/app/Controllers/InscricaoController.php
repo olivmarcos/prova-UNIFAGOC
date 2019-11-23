@@ -43,6 +43,22 @@ class InscricaoController {
         return ($rows < $atv['ate_limite_inscricao']);/*Verifica se o limite de inscritos na atividade de extensão não foi ultrapassado */
     }
 
+    public function recoverById($id)
+    {
+        return $this->inscricaoDao->recoverById($id);
+    }
+
+    public function recoverAll()
+    {
+        return $this->inscricaoDao->recoverAll();
+        // var_dump($teste);
+    }
+
+    public function delete($id)
+    {
+        $this->inscricaoDao->delete($id);
+    }
+
     public function verificaCpf($cpf, $id)
     {
         $cpfs = $this->inscricaoDao->verificarCpf($id);
@@ -59,10 +75,5 @@ class InscricaoController {
         $atividade = new AtividadeExtensaoController;
         $atv = $atividade->recoverById(3);
         return ($atv['ate_gratuito'] == 1);
-    }
-
-    public function geraBoleto()
-    {
-        
     }
 }

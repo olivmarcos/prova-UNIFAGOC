@@ -48,7 +48,7 @@ VALUES	(1, 1),
     	(2, 3);
 
 CREATE TABLE TBL_CONTAS_RECEBER (
-    ctr_id INT(6) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    ctr_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     ctr_boleto TEXT,
     ctr_valor DECIMAL(5, 2),
     ctr_dataVencimento DATE,

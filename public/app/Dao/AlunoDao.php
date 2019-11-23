@@ -21,8 +21,7 @@ class AlunoDao {
         $stmt->bindParam(':nome', $aluno->getNome());
         $stmt->bindParam(':sexo', $aluno->getSexo());
         $stmt->bindParam(':dataNascimento', $aluno->getDataNascimento());
-        $stmt->bindParam(':cpf', $aluno->getCpf());
-        
+        $stmt->bindParam(':cpf', $aluno->getCpf()); 
         return $stmt->execute();
     }
 
