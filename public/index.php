@@ -14,7 +14,9 @@ $router->namespace("Controller");
 $router->group(null);
 $router->get('/', 'Web:home');
 $router->get('/cadastro', 'Web:cadastro');
+$router->get('/extensao', 'Web:cadastroExtensao');
 $router->post('/salvar', 'Web:salvarAluno');
+$router->post('/salvarExtensao', 'Web:salvarExtensao');
 
 $router->dispatch();
 

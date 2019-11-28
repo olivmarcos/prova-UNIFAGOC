@@ -30,6 +30,13 @@ class Web {
         ]);
     }
 
+    public function cadastroExtensao(): void
+    {
+        echo $this->view->render('AtividadeExtensaoView', [
+            "title" => "Cadastro de Atividades"
+        ]);
+    }
+
     public function salvarAluno()
     {
         $nome = $_POST['nome'];
@@ -42,6 +49,12 @@ class Web {
         $cadastro = new AlunoController;
         $cadastro->save($nome, $sexo, $dataNascimento, $cpf);
     }
+
+    public function salvarExtensao()
+    {
+        var_dump($_POST);
+    }
+    
     public function error($data)
     {
         echo "<h1>Erro {$data["errcode"]}</h1>";

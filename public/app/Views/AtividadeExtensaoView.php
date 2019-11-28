@@ -12,43 +12,43 @@
     <header>Cadastro de Atividade de Extensão</header>
 
     <div class="container">
-        <form action="" class="formulario">
+        <form action="<?= url('salvarExtensao') ?>" class="formulario" method="post">
             <div class="main">
                 <div class="sections">
                     <label for="" class="label">Título</label><br>
-                    <input type="text">
+                    <input type="text" name="titulo">
                 </div>
                 <div class="">
                     <label for="" class="label">Tipo</label><br>
-                    <select name="" id="">
-                        <option value="">Projeto</option>
-                        <option value="">Curso</option>
+                    <select name="tipo" id="">
+                        <option value="Projeto  ">Projeto</option>
+                        <option value="Curso">Curso</option>
                     </select>
                 </div>
                 <div class="sections">
                     <label for="" class="label">Responsável</label><br>
-                    <input type="text">
+                    <input type="text" name="responsavel">
                 </div>
                 <div class="sections">
                     <label for="" class="label">Limite de Inscrições</label><br>
-                    <input type="text">
+                    <input type="text" name="limite">
                 </div>
                 <div class="sections">
                     <label for="" class="label">Local</label><br>
-                    <input type="text">
+                    <input type="text" name="local">
                 </div>
                 <div class="sections">
                     <label for="" class="label">Data</label><br>
-                    <input type="text">
+                    <input type="text" name="data">
                 </div>
                 <div class="sections">
                     <label for="" class="label">Hora</label><br>
-                    <input type="text">
+                    <input type="text" name="hora">
                 </div>
                 <div class="">
                     <label for="" class="label">Gratuito</label><br>
-                    <input type="checkbox" id="checkbox">Sim
-                    <input type="checkbox" id="checkbox">Não
+                    <input type="checkbox" id="checkbox" name="sim">Sim
+                    <input type="checkbox" id="checkbox" name="nao">Não
                 </div>
             </div>
             <button>Enviar</button>
