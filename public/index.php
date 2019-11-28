@@ -3,6 +3,7 @@
 // require_once('app/index.php');
 
 require 'vendor/autoload.php';
+include 'config.php';
 
 use CoffeeCode\Router\Router;
 
@@ -12,7 +13,8 @@ $router->namespace("Controller");
 
 $router->group(null);
 $router->get('/', 'Web:home');
-$router->get('/register', 'Web:register');
+$router->get('/cadastro', 'Web:cadastro');
+$router->post('/salvar', 'Web:salvarAluno');
 
 $router->dispatch();
 

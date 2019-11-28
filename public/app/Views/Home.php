@@ -15,6 +15,7 @@
                 ?>
             <article> 
                 <h3><?= $aluno['aln_nome'];?> </h3>
+                <h3><?= $aluno['aln_sexo'];?></h3>
             </article>
             <?php
             endforeach;

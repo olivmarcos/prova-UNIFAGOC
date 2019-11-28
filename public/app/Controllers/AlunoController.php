@@ -13,10 +13,14 @@ class AlunoController {
         $this->AlunoDao = new AlunoDao();
     }
 
-    public function save(AlunoModel $aluno)
+    public function save($nome, $sexo, $dataNascimento, $cpf)
     {
+        $aluno = new AlunoModel;
+        $aluno->setNome($nome);
+        $aluno->setSexo($sexo);
+        $aluno->setDataNascimento($dataNascimento);
+        $aluno->setCpf($cpf);
         return $this->AlunoDao->save($aluno);
-
     }
 
     public function recoverById($id)

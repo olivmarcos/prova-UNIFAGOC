@@ -12,27 +12,27 @@
     <header>Cadastro de Alunos</header>
 
     <div class="container">
-        <form action="" class="formulario">
+        <form action="<?= url('salvar');?>" class="formulario" method="post">
             <div class="main">
                 <div class="sections">
                     <label for="" class="label">Nome</label><br>
-                    <input type="text">
+                    <input type="text" name="nome">
                 </div>
                 <div class="">
                     <label for="" class="label">Sexo</label><br>
-                    <select name="" id="comboBox">
-                        <option value="">Masculino</option>
-                        <option value="">Feminino</option>
-                        <option value="">Outro</option>
+                    <select id="comboBox" name="sexo">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outro">Outro</option>
                     </select>
                 </div>
                 <div class="sections">
                     <label for="" class="label">Data de Nascimento</label><br>
-                    <input type="text">
+                    <input type="text" name="data">
                 </div>
                 <div class="sections">
                     <label for="" class="label">CPF</label><br>
-                    <input type="text">
+                    <input type="text" name="cpf">
                 </div>
             </div>
             <button>Enviar</button>

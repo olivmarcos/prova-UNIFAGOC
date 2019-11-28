@@ -23,11 +23,25 @@ class Web {
         ]);
     }
 
-    public function register()
+    public function cadastro(): void
     {
-        echo "<h1>Register</h1>";
+        echo $this->view->render('AlunoView', [
+            "title" => "Cadastro de Alunos"
+        ]);
     }
 
+    public function salvarAluno()
+    {
+        $nome = $_POST['nome'];
+        $sexo = $_POST['sexo'];
+        $dataNascimento = $_POST['data'];
+        $cpf = $_POST['cpf'];
+
+        var_dump($_POST);
+
+        $cadastro = new AlunoController;
+        $cadastro->save($nome, $sexo, $dataNascimento, $cpf);
+    }
     public function error($data)
     {
         echo "<h1>Erro {$data["errcode"]}</h1>";
