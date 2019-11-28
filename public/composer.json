@@ -5,5 +5,9 @@
             "Controller\\": "app/Controllers/",
             "Dao\\": "app/Dao/"
         }
+    },
+    "require": {
+        "coffeecode/router": "^1.0",
+        "league/plates": "v4.0.0-alpha"
     }
 }

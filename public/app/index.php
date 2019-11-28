@@ -51,7 +51,7 @@ $result = curl_exec($ch);
 //close connection
 curl_close($ch);
 
-echo $result;
+// echo $result;
 
 
-// require_once('Views/AlunoView.php');
+require_once('Views/AlunoView.php');

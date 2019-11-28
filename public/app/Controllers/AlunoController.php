@@ -27,7 +27,6 @@ class AlunoController {
     public function recoverAll()
     {
         return $this->AlunoDao->recoverAll();
-        // var_dump($teste);
     }
 
     public function update(AlunoModel $aluno, $id)
