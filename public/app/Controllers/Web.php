@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Dao\AlunoDao;
 use Dao\AtividadeExtensaoDao;
 use Dao\InscricaoDao;
 use League\Plates\Engine;
@@ -25,6 +26,20 @@ class Web {
             "title" => "Nome - Site",
             "alunos" => $alunos
         ]);
+    }
+
+    public function select2(): void
+    {
+        $teste = new AlunoDao;
+        $results = $teste->select();
+
+        $json = [];
+        foreach ($results as $result) {
+            $json[] = ['id' => $result['aln_id']];
+            $json[] = ['nome' => $result['aln_nome']];
+        }
+
+        echo json_encode($json);
     }
 
     public function cadastro(): void

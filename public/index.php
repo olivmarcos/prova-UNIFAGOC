@@ -13,6 +13,7 @@ $router->namespace("Controller");
 
 $router->group(null);
 $router->get('/', 'Web:home');
+$router->get('/select', 'Web:select2');
 
 $router->group('cadastro');
 $router->get('/aluno', 'Web:cadastro');

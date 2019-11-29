@@ -1,5 +1,6 @@
 <?php
 
+use Dao\AlunoDao;
 use Dao\AtividadeExtensaoDao;
 use Model\AtividadeExtensaoModel;
 
@@ -30,23 +31,3 @@ curl_close($ch);
 
 // require_once('Views/AlunoView.php');
 
-$atividade = new AtividadeExtensaoModel;
-$atividadeDao = new AtividadeExtensaoDao;
-
-$atividade->setTitulo('abcs');
-$atividade->setTipo('Curso');
-$atividade->setResponsavel('eu mesmo');
-$atividade->setLimiteInscricao('222');
-$atividade->setLocal('sala');
-$atividade->setData('2019-12-25');
-$atividade->setHora('20:00');
-$atividade->setGratuito('1');
-$atividade->setValor('15.00');
-
-
-if ($atividadeDao->save($atividade)) {
-    echo 'ok';
-}
-else{
-    echo 'not ok';
-}

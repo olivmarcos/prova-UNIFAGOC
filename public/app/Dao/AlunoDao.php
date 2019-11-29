@@ -59,4 +59,14 @@ class AlunoDao {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
+
+    public function select()
+    {
+        $nome = $_GET['q'];
+        $stmt = $this->con->prepare("SELECT aln_id, aln_nome FROM TBL_ALUNO WHERE aln_nome LIKE '%".$nome."%' LIMIT 10");
+        // $stmt->bindParam(':nome', $nome);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
