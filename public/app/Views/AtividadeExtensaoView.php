@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Atividade de Extensao</title>
 
-    <link rel="stylesheet" href="app/Assets/css/style.css">
+    <link rel="stylesheet" href="<?= ASSET;?>">
 </head>
 <body>
     <header>Cadastro de Atividade de Extensão</header>
 
     <div class="container">
-        <form action="<?= url('salvarExtensao') ?>" class="formulario" method="post">
+        <form action="<?= url('salvar/extensao') ?>" class="formulario" method="post">
             <div class="main">
                 <div class="sections">
                     <label for="" class="label">Título</label><br>
@@ -47,8 +47,14 @@
                 </div>
                 <div class="">
                     <label for="" class="label">Gratuito</label><br>
-                    <input type="checkbox" id="checkbox" name="sim">Sim
-                    <input type="checkbox" id="checkbox" name="nao">Não
+                    <input type="hidden" id="checkbox" name="gratuito" value="0" />
+                    <input type="checkbox" id="checkbox" name="gratuito" value="1" />Sim
+
+                    <label for="" class="labelValor">Valor</label>
+                    <input type="text" id="valor" name="valor"/>
+                </div>
+                <div class="">
+
                 </div>
             </div>
             <button>Enviar</button>

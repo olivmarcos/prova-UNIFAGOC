@@ -13,9 +13,20 @@ class AtividadeExtensaoController {
         $this->AtividadeExtensaoDao = new AtividadeExtensaoDao();
     }
 
-    public function save(AtividadeExtensaoModel $atividade)
+    public function save($titulo, $tipo, $responsavel, $limite, $local, $data, $hora, $gratuito, $valor)
     {
-        return $this->AtividadeExtensaoDao->save($atividade);
+        $extensao = new AtividadeExtensaoModel;
+        $extensao->setTitulo($titulo);
+        $extensao->setTipo($tipo);
+        $extensao->setResponsavel($responsavel);
+        $extensao->setLimiteInscricao($limite);
+        $extensao->setLocal($local);
+        $extensao->setData($data);
+        $extensao->setHora($hora);
+        $extensao->setGratuito($gratuito);
+        $extensao->setValor($valor);
+        return $this->AtividadeExtensaoDao->save($extensao);
+
     }
 
     public function recoverById($id)

@@ -13,10 +13,14 @@ $router->namespace("Controller");
 
 $router->group(null);
 $router->get('/', 'Web:home');
-$router->get('/cadastro', 'Web:cadastro');
+
+$router->group('cadastro');
+$router->get('/aluno', 'Web:cadastro');
 $router->get('/extensao', 'Web:cadastroExtensao');
-$router->post('/salvar', 'Web:salvarAluno');
-$router->post('/salvarExtensao', 'Web:salvarExtensao');
+
+$router->group('salvar');
+$router->post('/aluno', 'Web:salvarAluno');
+$router->post('/extensao', 'Web:salvarExtensao');
 
 $router->dispatch();
 

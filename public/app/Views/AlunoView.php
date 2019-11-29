@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aluno</title>
 
-    <link rel="stylesheet" href="app/Assets/css/style.css">
+    <link rel="stylesheet" href="<?= ASSET ?>">
 </head>
 <body>
     <header>Cadastro de Alunos</header>
 
     <div class="container">
-        <form action="<?= url('salvar');?>" class="formulario" method="post">
+        <form action="<?= url('salvar/aluno');?>" class="formulario" method="post">
             <div class="main">
                 <div class="sections">
                     <label for="" class="label">Nome</label><br>

@@ -2,7 +2,9 @@
 
 namespace Controller;
 
+use Dao\AtividadeExtensaoDao;
 use League\Plates\Engine;
+use Model\AtividadeExtensaoModel;
 
 class Web {
 
@@ -43,18 +45,28 @@ class Web {
         $sexo = $_POST['sexo'];
         $dataNascimento = $_POST['data'];
         $cpf = $_POST['cpf'];
-
-        var_dump($_POST);
-
+        
         $cadastro = new AlunoController;
         $cadastro->save($nome, $sexo, $dataNascimento, $cpf);
     }
 
     public function salvarExtensao()
     {
-        var_dump($_POST);
-    }
+        $titulo = $_POST['titulo'];
+        $tipo = $_POST['tipo'];
+        $responsavel = $_POST['responsavel'];
+        $limite = $_POST['limite'];
+        $local = $_POST['local'];
+        $data = $_POST['data'];
+        $hora = $_POST['hora'];
+        $gratuito = $_POST['gratuito'];
+        $valor = $_POST['valor'];
+
+        $cadastro = new AtividadeExtensaoController;
+        $cadastro->save($titulo, $tipo, $responsavel, $limite, $local, $data, $hora, $gratuito, $valor);
     
+    }
+
     public function error($data)
     {
         echo "<h1>Erro {$data["errcode"]}</h1>";

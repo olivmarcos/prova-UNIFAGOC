@@ -17,7 +17,7 @@ class AtividadeExtensaoDao {
     public function save(AtividadeExtensaoModel $atividade)
     {
         $stmt = $this->con->prepare("INSERT INTO TBL_ATIVIDADE_EXTENSAO(ate_titulo, ate_tipo, ate_responsavel, ate_limite_inscricao, ate_local, ate_data, ate_hora, ate_gratuito, ate_valor)"
-        . "VALUES (:titulo, :tipo, :responsavel, :limite, :local, :data, :hora, :gratuito, :valor");
+        . "VALUES (:titulo, :tipo, :responsavel, :limite, :local, :data, :hora, :gratuito, :valor)");
         $stmt->bindParam(':titulo', $atividade->getTitulo());
         $stmt->bindParam(':tipo', $atividade->getTipo());
         $stmt->bindParam(':responsavel', $atividade->getResponsavel());

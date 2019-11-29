@@ -64,3 +64,11 @@ select {
 .main {
     margin-bottom: 1rem;
 }
+
+#valor {
+    width: 5rem;
+}
+
+.labelValor {
+    margin-left: 13.5rem;
+}
