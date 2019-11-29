@@ -17,10 +17,12 @@ $router->get('/', 'Web:home');
 $router->group('cadastro');
 $router->get('/aluno', 'Web:cadastro');
 $router->get('/extensao', 'Web:cadastroExtensao');
+$router->get('/inscricao', 'Web:inscricao');
 
 $router->group('salvar');
 $router->post('/aluno', 'Web:salvarAluno');
 $router->post('/extensao', 'Web:salvarExtensao');
+$router->post('/inscricao', 'Web:realizarInscricao');
 
 $router->dispatch();
 

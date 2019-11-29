@@ -3,8 +3,10 @@
 namespace Controller;
 
 use Dao\AtividadeExtensaoDao;
+use Dao\InscricaoDao;
 use League\Plates\Engine;
 use Model\AtividadeExtensaoModel;
+use Model\InscricaoModel;
 
 class Web {
 
@@ -45,7 +47,7 @@ class Web {
         $sexo = $_POST['sexo'];
         $dataNascimento = $_POST['data'];
         $cpf = $_POST['cpf'];
-        
+
         $cadastro = new AlunoController;
         $cadastro->save($nome, $sexo, $dataNascimento, $cpf);
     }
@@ -64,7 +66,25 @@ class Web {
 
         $cadastro = new AtividadeExtensaoController;
         $cadastro->save($titulo, $tipo, $responsavel, $limite, $local, $data, $hora, $gratuito, $valor);
-    
+    }
+
+    public function inscricao()
+    {
+        echo $this->view->render('InscricaoView', [
+            'title' => "Inscricao"
+        ]);
+    }
+
+    public function realizarInscricao()
+    {
+        var_dump($_POST);
+
+        $alunoId = $_POST['aluno'];
+        $atividadeId = $_POST['atividade'];
+        $cpf = $_POST['cpf'];
+
+        $cadastro = new InscricaoController;
+        $cadastro->save($alunoId, $atividadeId, $cpf);
     }
 
     public function error($data)
