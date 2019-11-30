@@ -18,14 +18,14 @@
                 <div class="sections">
                     <label for="" class="label">Aluno</label><br>
                     <input type="text" name="aluno" id="aluno" placeholder="Pesquisar pelo Nome"> 
+                    <input type="hidden" name="aluno-id" id="aluno-id"> 
+                    <input type="hidden" name="aluno-cpf" id="aluno-cpf"> 
                 </div>
                 <div class="sections">
                     <label for="" class="label">Atividade de Extensão</label><br>
-                    <input type="text" name="atividade" id="atividade" placeholder="Selecione a Atividade">
-                </div>
-                <div class="sections">
-                    <label for="" class="label">CPF</label><br>
-                    <input type="text" name="cpf">
+                    <input type="text" name="atividade" id="atividade" placeholder="Pesquisar pela Atividade">
+                    <input type="hidden" name="atividade-id" id="atividade-id"> 
+
                 </div>
             </div>
             <button>Inscrever</button>
@@ -36,11 +36,36 @@
 
     <script>
         $("#aluno").autocomplete({
-            source:"/select/aluno"
+            minLenght: 0,
+            source:"/select/aluno",
+            focus: function( event, ui ) {
+                $("#aluno").val( ui.item.label );
+
+                return false;
+            },
+            select: function( event, ui ) {
+                $("#aluno").val( ui.item.label );
+                $("#aluno-id").val( ui.item.value );
+                $("#aluno-cpf").val( ui.item.cpf );
+
+                return false;
+            }
         });
 
         $("#atividade").autocomplete({
-            source:"/select/atividade"
+            minLenght: 0,
+            source:"/select/atividade",
+            focus: function( event, ui ) {
+                $("#atividade").val( ui.item.label );
+
+                return false;
+            },
+            select: function( event, ui ) {
+                $("#atividade").val( ui.item.label );
+                $("#atividade-id").val( ui.item.value );
+
+                return false;
+            }
         });
 
     </script>

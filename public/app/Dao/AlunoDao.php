@@ -65,12 +65,14 @@ class AlunoDao {
         $nome = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_STRING);
         $stmt = $this->con->prepare("SELECT aln_id, aln_nome, aln_cpf FROM TBL_ALUNO WHERE aln_nome LIKE '%".$nome."%' ORDER BY aln_nome LIMIT 10");
         $stmt->execute();
-
+        
         while($results = $stmt->fetch(PDO::FETCH_ASSOC))
         {
-            // $data[] = $results['aln_id'];
-            $data[] = $results['aln_nome'];
-            // $data[] = $results['aln_cpf'];
+            $data[] = array(
+                "value" => $results['aln_id'],
+                "label" => $results['aln_nome'],
+                "cpf" => $results['aln_cpf']
+            );
         }
         
         echo json_encode($data);

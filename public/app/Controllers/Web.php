@@ -89,14 +89,18 @@ class Web {
 
     public function realizarInscricao()
     {
-        var_dump($_POST);
-
-        $alunoId = $_POST['aluno'];
-        $atividadeId = $_POST['atividade'];
-        $cpf = $_POST['cpf'];
+        $alunoId = $_POST['aluno-id'];
+        $atividadeId = $_POST['atividade-id'];
+        $cpf = $_POST['aluno-cpf'];
 
         $cadastro = new InscricaoController;
-        $cadastro->save($alunoId, $atividadeId, $cpf);
+        if(isset($alunoId) && isset($atividadeId) && isset($cpf))
+        {
+            $cadastro->save($alunoId, $atividadeId, $cpf);
+        }
+        else{
+            echo 'erro';
+        }
     }
 
     public function error($data)
