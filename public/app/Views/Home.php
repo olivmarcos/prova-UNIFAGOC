@@ -1,33 +1,47 @@
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Jquery select2 ajax autocomplete example code with demo</title>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Autocomplete - Default functionality</title>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+  <link rel="stylesheet" href="<?= ASSET ?>">
+
 </head>
 <body>
 
+<label>Nome:</label>
+<select name="" id="selUser"></select>
 
-<div style="width:520px;margin:0px auto;margin-top:30px;height:500px;">
-  <h2>Select Box with Search Option Jquery Select2.js</h2>
-  <select class="itemName form-control" style="width:500px" name="itemName"></select>
-</div>
+<script>
+$(document).ready(function(){
 
-
-<script type="text/javascript">
-      $('.itemName').select2({
-        placeholder: 'Select an item',
-        ajax: {
-          url: '/select',
-          dataType: 'json',
-          delay: 250,
-          processResults: function (data) {
-            return {
-              results: data
-            };
-          },
-          cache: true
-        }
-      });
+$("#selUser").select2({
+   ajax: {
+     url: "/select",
+     type: "get",
+     dataType: 'json',
+     delay: 250,
+     data: function (params) {
+        return {
+           searchTerm: params.term // search term
+        };
+     },
+     processResults: function (response) {
+        return {
+           results: response
+        };
+     },
+     cache: true
+   }
+});
+});
 </script>
 
 </body>

@@ -60,13 +60,19 @@ class AlunoDao {
         $stmt->execute();
     }
 
-    public function select()
+    public function autoCompleteAluno()
     {
-        $nome = $_GET['q'];
-        $stmt = $this->con->prepare("SELECT aln_id, aln_nome FROM TBL_ALUNO WHERE aln_nome LIKE '%".$nome."%' LIMIT 10");
-        // $stmt->bindParam(':nome', $nome);
+        $nome = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_STRING);
+        $stmt = $this->con->prepare("SELECT aln_id, aln_nome, aln_cpf FROM TBL_ALUNO WHERE aln_nome LIKE '%".$nome."%' ORDER BY aln_nome LIMIT 10");
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+
+        while($results = $stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            // $data[] = $results['aln_id'];
+            $data[] = $results['aln_nome'];
+            // $data[] = $results['aln_cpf'];
+        }
+        
+        echo json_encode($data);
     }
 }

@@ -21,25 +21,22 @@ class Web {
     public function home(): void
     {
         $alunos = (new AlunoController())->recoverAll();
-        // var_dump($alunos);
         echo $this->view->render('Home', [
             "title" => "Nome - Site",
             "alunos" => $alunos
         ]);
     }
 
-    public function select2(): void
+    public function autocompleteAluno(): void
     {
-        $teste = new AlunoDao;
-        $results = $teste->select();
+        $aluno = new AlunoDao;
+        $aluno->autoCompleteAluno();
+    }
 
-        $json = [];
-        foreach ($results as $result) {
-            $json[] = ['id' => $result['aln_id']];
-            $json[] = ['nome' => $result['aln_nome']];
-        }
-
-        echo json_encode($json);
+    public function autocompleteAtividade(): void
+    {
+        $atividade = new AtividadeExtensaoDao;
+        $atividade->autoCompleteAtividade();
     }
 
     public function cadastro(): void

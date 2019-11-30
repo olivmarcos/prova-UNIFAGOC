@@ -69,4 +69,20 @@ class AtividadeExtensaoDao {
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
+
+    public function autoCompleteAtividade()
+    {
+        $atividade = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_STRING);
+        $stmt = $this->con->prepare("SELECT ate_id, ate_titulo FROM TBL_ATIVIDADE_EXTENSAO WHERE ate_titulo LIKE '%".$atividade."%' ORDER BY ate_titulo LIMIT 5");
+        $stmt->execute();
+
+        while($results = $stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            // $data[] = $results['aln_id'];
+            $data[] = $results['ate_titulo'];
+            // $data[] = $results['aln_cpf'];
+        }
+        
+        echo json_encode($data);
+    }
 }

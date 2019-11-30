@@ -72,3 +72,7 @@ select {
 .labelValor {
     margin-left: 13.5rem;
 }
+
+#skill_input{
+    z-index: 100 !important;
+    }
