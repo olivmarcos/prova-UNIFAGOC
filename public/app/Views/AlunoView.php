@@ -7,6 +7,7 @@
     <title>Aluno</title>
 
     <link rel="stylesheet" href="<?= ASSET ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 </head>
 <body>
     <header>Cadastro de Alunos</header>
@@ -38,5 +39,10 @@
             <button>Enviar</button>
         </form>
     </div>
+    <footer>
+        <div class="icon">
+            <a href="/painel"><i class="fas fa-arrow-circle-left"></i></a>
+        </div>
+    </footer>
 </body>
 </html>

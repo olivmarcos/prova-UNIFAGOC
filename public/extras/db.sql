@@ -58,3 +58,15 @@ CREATE TABLE TBL_CONTAS_RECEBER (
 	CONSTRAINT FK_inscricao FOREIGN KEY (ctr_INS_ID)
 	REFERENCES TBL_INSCRICAO(ins_id)
 );
+
+CREATE TABLE TBL_USUARIO (
+    usu_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    usu_nome VARCHAR(150),
+    usu_password VARCHAR(150)
+);
+
+INSERT INTO TBL_USUARIO (usu_nome, usu_password)
+VALUES ('Admin', 'admin'),
+        ('Saulo', 'saulo'),
+        ('Matheus', 'mama'),
+        ('Carlos', 'barreto');

@@ -10,18 +10,17 @@
 <body>
    <header></header>
    <section>
-
-      <form id="login" action="" method="post">
+      <form action="<?= url('/login');?>"id="login" method="post">
          <div class="titulo">
             <h2>Sistema de Cadastro</h2>
          </div>
          <div class="login-item">
             <label for="">Nome</label><br>
-            <input type="text">
+            <input type="text" name="nome">
          </div>
          <div class="login-item">
             <label for="">Senha</label><br>
-            <input type="text">
+            <input type="text" name="password">
          </div>
          <button type="submit">Entrar</button>
       </form>

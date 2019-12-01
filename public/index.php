@@ -13,11 +13,12 @@ $router->namespace("Controller");
 
 $router->group(null);
 $router->get('/', 'Web:home');
+$router->post('/login', 'Web:login');
+$router->get('/painel', 'Web:painel');
 
 $router->group('select');
 $router->get('/aluno', 'Web:autocompleteAluno');
 $router->get('/atividade', 'Web:autocompleteAtividade');
-
 
 $router->group('cadastro');
 $router->get('/aluno', 'Web:cadastro');

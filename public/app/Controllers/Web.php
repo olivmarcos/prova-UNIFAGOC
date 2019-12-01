@@ -5,9 +5,11 @@ namespace Controller;
 use Dao\AlunoDao;
 use Dao\AtividadeExtensaoDao;
 use Dao\InscricaoDao;
+use Dao\UsuarioDao;
 use League\Plates\Engine;
 use Model\AtividadeExtensaoModel;
 use Model\InscricaoModel;
+use Model\UsuarioModel;
 
 class Web {
 
@@ -103,9 +105,33 @@ class Web {
         }
     }
 
+    public function login()
+    {
+        $nome = $_POST['nome'];
+        $password = $_POST['password'];
+        $usuario = new UsuarioController;
+
+        if($usuario->recoverByName($nome, $password))
+        {
+            header('Location: /painel');
+        }
+        else
+        {
+            echo 'usuario não existe';
+        }
+    }
+
+    public function painel(): void
+    {
+        echo $this->view->render('PainelView', [
+            "title" => "Painel de Controle"
+        ]);
+    }
+
     public function error($data)
     {
         echo "<h1>Erro {$data["errcode"]}</h1>";
         var_dump($data);
     }
+    
 }

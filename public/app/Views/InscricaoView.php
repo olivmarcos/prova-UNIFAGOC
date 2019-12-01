@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="<?= ASSET ?>">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
 </head>
 <body>
     <header>Inscrição</header>
@@ -31,6 +33,13 @@
             <button>Inscrever</button>
         </form>
     </div>
+
+    <footer>
+        <div class="icon">
+            <a href="/painel"><i class="fas fa-arrow-circle-left"></i></a>
+        </div>
+    </footer>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
@@ -67,7 +76,6 @@
                 return false;
             }
         });
-
     </script>
 </body>
 </html>
