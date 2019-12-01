@@ -1,7 +1,5 @@
 <?php
 
-// require_once('app/index.php');
-
 require 'vendor/autoload.php';
 include 'config.php';
 
@@ -29,6 +27,11 @@ $router->group('salvar');
 $router->post('/aluno', 'Web:salvarAluno');
 $router->post('/extensao', 'Web:salvarExtensao');
 $router->post('/inscricao', 'Web:realizarInscricao');
+
+$router->group('listar');
+$router->get('/aluno', 'Web:listarAlunos');
+$router->get('/atividade', 'Web:listarAtividades');
+$router->get('/inscricao', 'Web:listarInscricoes');
 
 $router->dispatch();
 

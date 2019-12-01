@@ -45,6 +45,8 @@ input {
 }
 
 button {
+    cursor: pointer;
+    margin-bottom: 1rem;
     font-size: 1rem;
     padding: .5rem;
     color: white;
@@ -153,3 +155,34 @@ i {
     color: white;
     padding-right: 1.5rem;
 }
+
+/*TABLEAS*/
+.center {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+tr {
+    height: 2rem;
+}
+
+td {
+    width: 8rem;
+}
+#tabela td, #tabela th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #tabela tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #tabela tr:hover {background-color: #ddd;}
+  
+  #tabela th {
+    text-align: left;
+    background-color: seagreen;
+    color: white;
+  }

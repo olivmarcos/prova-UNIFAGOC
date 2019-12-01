@@ -18,9 +18,9 @@
 
     <main>
         <ul>
-            <a href="/cadastro/aluno"><li>Cadastrar Aluno</li></a>
-            <a href="/cadastro/extensao"><li>Cadastrar Atividade de Extensão</li></a>
-            <a href="/cadastro/inscricao"><li>Fazer Inscricação</li></a>
+            <a href="/listar/aluno"><li>Alunos</li></a>
+            <a href="/listar/atividade"><li>Atividades de Extensão</li></a>
+            <a href="/listar/inscricao"><li>Fazer Inscricação</li></a>
         </ul>
     </main>
 

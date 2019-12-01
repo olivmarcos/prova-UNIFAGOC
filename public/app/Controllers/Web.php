@@ -22,10 +22,8 @@ class Web {
 
     public function home(): void
     {
-        $alunos = (new AlunoController())->recoverAll();
         echo $this->view->render('Home', [
-            "title" => "Nome - Site",
-            "alunos" => $alunos
+            "title" => "Nome - Site"
         ]);
     }
 
@@ -63,7 +61,13 @@ class Web {
         $cpf = $_POST['cpf'];
 
         $cadastro = new AlunoController;
-        $cadastro->save($nome, $sexo, $dataNascimento, $cpf);
+        if($cadastro->save($nome, $sexo, $dataNascimento, $cpf))
+        {
+            header('Location: /listar/aluno');
+        }
+        else {
+            echo 'erro';
+        }
     }
 
     public function salvarExtensao()
@@ -79,7 +83,13 @@ class Web {
         $valor = $_POST['valor'];
 
         $cadastro = new AtividadeExtensaoController;
-        $cadastro->save($titulo, $tipo, $responsavel, $limite, $local, $data, $hora, $gratuito, $valor);
+        if($cadastro->save($titulo, $tipo, $responsavel, $limite, $local, $data, $hora, $gratuito, $valor))
+        {
+            header('Location: /listar/atividade');
+        }
+        else {
+            echo 'erro';
+        }
     }
 
     public function inscricao()
@@ -99,6 +109,7 @@ class Web {
         if(isset($alunoId) && isset($atividadeId) && isset($cpf))
         {
             $cadastro->save($alunoId, $atividadeId, $cpf);
+            header('Location: /listar/inscricao');
         }
         else{
             echo 'erro';
@@ -125,6 +136,36 @@ class Web {
     {
         echo $this->view->render('PainelView', [
             "title" => "Painel de Controle"
+        ]);
+    }
+
+    public function listarAlunos(): void
+    {
+        $alunos = (new AlunoController())->recoverAll();
+        
+        echo $this->view->render('TabelaAluno', [
+            "title" => "Nome - Site",
+            "alunos" => $alunos
+        ]);
+    }
+
+    public function listarAtividades(): void
+    {
+        $atividades = (new AtividadeExtensaoController())->recoverAll();
+        
+        echo $this->view->render('TabelaAtividade', [
+            "title" => "Nome - Site",
+            "atividades" => $atividades
+        ]);
+    }
+
+    public function listarInscricoes(): void
+    {
+        $inscricoes = (new InscricaoController())->recoverAll();
+        
+        echo $this->view->render('TabelaInscricao', [
+            "title" => "Nome - Site",
+            "inscricoes" => $inscricoes
         ]);
     }
 

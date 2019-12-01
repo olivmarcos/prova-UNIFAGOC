@@ -51,7 +51,6 @@ class InscricaoController {
     public function recoverAll()
     {
         return $this->inscricaoDao->recoverAll();
-        // var_dump($teste);
     }
 
     public function delete($id)

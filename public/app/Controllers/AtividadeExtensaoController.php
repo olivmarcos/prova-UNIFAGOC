@@ -36,7 +36,7 @@ class AtividadeExtensaoController {
 
     public function recoverAll()
     {
-        var_dump($this->AtividadeExtensaoDao->recoverAll());
+        return $this->AtividadeExtensaoDao->recoverAll();
     }
 
     public function update(AtividadeExtensaoModel $atividade, $id)

@@ -36,7 +36,7 @@ class AlunoDao {
 
     public function recoverAll()
     {
-        $stmt = $this->con->prepare("SELECT * FROM TBL_ALUNO");
+        $stmt = $this->con->prepare("SELECT aln_id, aln_nome, aln_sexo, aln_dataNascimento, aln_cpf FROM TBL_ALUNO");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
