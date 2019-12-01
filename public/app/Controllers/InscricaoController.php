@@ -1,7 +1,9 @@
 <?php
 namespace Controller;
 
+use Dao\ContasReceberDao;
 use Dao\InscricaoDao;
+use Model\ContasReceberModel;
 use Model\InscricaoModel;
 
 class InscricaoController {
@@ -32,10 +34,10 @@ class InscricaoController {
                 else 
                 {
                     $this->inscricaoDao->save($inscricao);
-                    echo "Registro realizado com sucesso";
+                    $this->geraContasReceber($alunoId, $atividadeId);
+                    echo "Registro realizado com sucesso e Contas Receber criado";
                     return;
                 }
-        
             }
             echo "CPF já inscrito!";
             return;
@@ -63,6 +65,11 @@ class InscricaoController {
         return $this->inscricaoDao->recoverAll();
     }
 
+    public function recoverLast()
+    {
+        return $this->inscricaoDao->recoverLast();
+
+    }
     public function delete($id)
     {
         $this->inscricaoDao->delete($id);
@@ -86,18 +93,22 @@ class InscricaoController {
         return ($atv['ate_gratuito'] == 1);
     }
 
-    public function geraBoleto()
+    public function geraBoleto($alunoId, $atividadeId)
     {
         $aluno = new AlunoController;
-        $aln = $aluno->recoverById(4);
+        $aln = $aluno->recoverById($alunoId);
         $atividade = new AtividadeExtensaoController;
-        $atv = $atividade->recoverById(3);
+        $atv = $atividade->recoverById($atividadeId);
+        $inscricao = new InscricaoController;
+        $insc = $inscricao->recoverLast();
 
         $cpf = $aln['aln_cpf'];
-        $valor = str_replace('.', '', $atv['ate_valor']);
+        $valor = $atv['ate_valor'];
+        $valorFormatado = str_replace('.', '', $atv['ate_valor']);
         $vencimento = date('Y-m-d', strtotime("-1 day", strtotime($atv['ate_data'])));
+        $descricao = $aln['aln_nome'] . ', '. $atv['ate_titulo'] . ', ' . $atv['ate_local'] . ', ' . $atv['ate_data']; 
 
-        $data = array("cpf" => $cpf, "valor" => $valor, "vencimento" => $vencimento);
+        $data = array("cpf" => $cpf, "valor" => $valorFormatado, "vencimento" => $vencimento);
         $data_string = json_encode($data);
 
         $ch = curl_init('https://prova-dev-unifagoc.herokuapp.com/api/v1/boleto');
@@ -114,10 +125,35 @@ class InscricaoController {
 
         //execute post
         $result = curl_exec($ch);
+        $resultFormatado = str_replace(['{"codigo":', '}'], '', $result);
 
         //close connection
         curl_close($ch);
+        // $contas = [];
+        $conta = [
+                    ["boleto" => $resultFormatado],
+                    ["valor" => $valor],
+                    ["vencimento" => $vencimento],
+                    ["descricao" => $descricao],
+                    ["inscricao" => $insc['ins_id']]
+                ];
 
-        echo $result;
+
+        return $conta;
+    }
+
+    public function geraContasReceber($alunoId, $atividadeId)
+    {
+        $info = $this->geraBoleto($alunoId, $atividadeId);
+
+        $boleto = $info[0]['boleto'];
+        $valor = $info[1]['valor'];
+        $vencimento = $info[2]['vencimento'];
+        $descricao = $info[3]['descricao'];
+        $inscricao = $info[4]['inscricao'];
+
+        $conta = new ContasReceberController;
+        $conta->save($boleto, $valor, $vencimento, $descricao, $inscricao);
+
     }
 }

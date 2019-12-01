@@ -46,7 +46,15 @@ class InscricaoDao {
     {
         $stmt = $this->con->prepare("DELETE FROM TBL_INSCRICAO WHERE ins_id = :id");
         $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
+
+    public function recoverLast()
+    {
+        $stmt = $this->con->prepare("SELECT MAX(ins_id) as 'ins_id' FROM TBL_INSCRICAO");
         $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
 
     public function verificarLimite($id)

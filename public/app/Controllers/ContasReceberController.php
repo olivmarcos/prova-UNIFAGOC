@@ -13,17 +13,16 @@ class ContasReceberController {
         $this->contasReceberDao = new ContasReceberDao();
     }
 
-    public function save($boleto, $valor, $dataVencimento, $descricao, $inscricaoId)
+    public function save($boleto, $valor, $vencimento, $descricao, $inscricao)
     {
-        $contas = new ContasReceberModel;
-        $contas->setBoleto($boleto);
-        $contas->setValor($valor);
-        $contas->setDataVencimento($dataVencimento);
-        $contas->setDescricao($descricao);
-        $contas->getInscricaoId($inscricaoId);
-        
-        return $this->contasReceberDao->save($contas);
+        $conta = new ContasReceberModel;
+        $conta->setBoleto($boleto);
+        $conta->setValor($valor);
+        $conta->setDataVencimento($vencimento);
+        $conta->setDescricao($descricao);
+        $conta->setInscricaoId($inscricao);
 
+        return $this->contasReceberDao->save($conta);
     }
 
     public function recoverById($id)
@@ -33,7 +32,7 @@ class ContasReceberController {
 
     public function recoverAll()
     {
-        var_dump($this->contasReceberDao->recoverAll());
+        return $this->contasReceberDao->recoverAll();
     }
 
     public function delete($id)
