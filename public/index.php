@@ -13,6 +13,7 @@ $router->group(null);
 $router->get('/', 'Web:home');
 $router->post('/login', 'Web:login');
 $router->get('/painel', 'Web:painel');
+$router->get('/boleto', 'Web:geraBoleto');
 
 $router->group('select');
 $router->get('/aluno', 'Web:autocompleteAluno');

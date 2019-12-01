@@ -13,7 +13,7 @@
 <header></header>
     <div class="center">
         <div class="button">
-        <a href="/cadastro/inscricao"><button>Novo</button></a>
+        <a href="/cadastro/extensao"><button>Novo</button></a>
         </div>
     <table id="tabela">
             <tr>

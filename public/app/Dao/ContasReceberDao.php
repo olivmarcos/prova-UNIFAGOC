@@ -17,7 +17,7 @@ class ContasReceberDao {
     public function save(ContasReceberModel $conta)
     {
         $stmt = $this->con->prepare("INSERT INTO TBL_CONTAS_RECEBER(ctr_boleto, ctr_valor, ctr_dataVencimento, ctr_descricao, ctr_INS_ID)"
-        . "VALUES (:boleto, :valor, :vencimento, :descricao, :inscricao");
+        . "VALUES (:boleto, :valor, :vencimento, :descricao, :inscricao)");
         $stmt->bindParam(':boleto', $conta->getBoleto());
         $stmt->bindParam(':valor', $conta->getValor());
         $stmt->bindParam(':vencimento', $conta->getDataVencimento());

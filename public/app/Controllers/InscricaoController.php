@@ -23,9 +23,19 @@ class InscricaoController {
         {
             if (!$this->verificaCpf($cpf, $atividadeId))
             {
-                $this->inscricaoDao->save($inscricao);
-                echo "Registro realizado com sucesso";
-                return;
+                if($this->verificaGratuidade($atividadeId))
+                {
+                    $this->inscricaoDao->save($inscricao);
+                    echo "Registro realizado com sucesso";
+                    return;
+                }
+                else 
+                {
+                    $this->inscricaoDao->save($inscricao);
+                    echo "Registro realizado com sucesso";
+                    return;
+                }
+        
             }
             echo "CPF já inscrito!";
             return;
@@ -69,10 +79,45 @@ class InscricaoController {
         return false;
     }
 
-    public function verificaGratuidade()
+    public function verificaGratuidade($atividadeId)
     {
         $atividade = new AtividadeExtensaoController;
-        $atv = $atividade->recoverById(3);
+        $atv = $atividade->recoverById($atividadeId);
         return ($atv['ate_gratuito'] == 1);
+    }
+
+    public function geraBoleto()
+    {
+        $aluno = new AlunoController;
+        $aln = $aluno->recoverById(4);
+        $atividade = new AtividadeExtensaoController;
+        $atv = $atividade->recoverById(3);
+
+        $cpf = $aln['aln_cpf'];
+        $valor = str_replace('.', '', $atv['ate_valor']);
+        $vencimento = date('Y-m-d', strtotime("-1 day", strtotime($atv['ate_data'])));
+
+        $data = array("cpf" => $cpf, "valor" => $valor, "vencimento" => $vencimento);
+        $data_string = json_encode($data);
+
+        $ch = curl_init('https://prova-dev-unifagoc.herokuapp.com/api/v1/boleto');
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($data_string))
+        );
+
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+
+        //execute post
+        $result = curl_exec($ch);
+
+        //close connection
+        curl_close($ch);
+
+        echo $result;
     }
 }

@@ -13,8 +13,15 @@ class ContasReceberController {
         $this->contasReceberDao = new ContasReceberDao();
     }
 
-    public function save(ContasReceberModel $contas)
+    public function save($boleto, $valor, $dataVencimento, $descricao, $inscricaoId)
     {
+        $contas = new ContasReceberModel;
+        $contas->setBoleto($boleto);
+        $contas->setValor($valor);
+        $contas->setDataVencimento($dataVencimento);
+        $contas->setDescricao($descricao);
+        $contas->getInscricaoId($inscricaoId);
+        
         return $this->contasReceberDao->save($contas);
 
     }

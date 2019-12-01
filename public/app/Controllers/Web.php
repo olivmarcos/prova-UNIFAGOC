@@ -72,6 +72,8 @@ class Web {
 
     public function salvarExtensao()
     {
+        // var_dump($_POST);
+
         $titulo = $_POST['titulo'];
         $tipo = $_POST['tipo'];
         $responsavel = $_POST['responsavel'];
@@ -81,6 +83,12 @@ class Web {
         $hora = $_POST['hora'];
         $gratuito = $_POST['gratuito'];
         $valor = $_POST['valor'];
+
+        if($tipo == "Projeto")
+        {
+            $gratuito = '1';
+            $valor = '0';
+        }
 
         $cadastro = new AtividadeExtensaoController;
         if($cadastro->save($titulo, $tipo, $responsavel, $limite, $local, $data, $hora, $gratuito, $valor))
@@ -169,10 +177,18 @@ class Web {
         ]);
     }
 
+
+    public function geraBoleto()
+    {
+        $boleto = (new InscricaoController())->geraBoleto();
+        return $boleto;
+    }
+
     public function error($data)
     {
         echo "<h1>Erro {$data["errcode"]}</h1>";
         var_dump($data);
     }
+
     
 }

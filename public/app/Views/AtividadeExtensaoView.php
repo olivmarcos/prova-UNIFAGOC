@@ -22,8 +22,8 @@
                 </div>
                 <div class="">
                     <label for="" class="label">Tipo</label><br>
-                    <select name="tipo" id="">
-                        <option value="Projeto  ">Projeto</option>
+                    <select name="tipo" id="tipo" onchange="validar()">
+                        <option value="Projeto">Projeto</option>
                         <option value="Curso">Curso</option>
                     </select>
                 </div>
@@ -47,13 +47,13 @@
                     <label for="" class="label">Hora</label><br>
                     <input type="text" name="hora">
                 </div>
-                <div class="">
-                    <label for="" class="label">Gratuito</label><br>
+                <div id="op">
+                    <label for="" id="labelG" class="label">Gratuito</label><br>
                     <input type="hidden" id="checkbox" name="gratuito" value="0" />
-                    <input type="checkbox" id="checkbox" name="gratuito" value="1" />Sim
+                    <input type="checkbox" onclick="check()" class="" id="checkbox" name="gratuito" value="1" checked/>Sim
 
-                    <label for="" class="labelValor">Valor</label>
-                    <input type="text" id="valor" name="valor"/>
+                    <label for="" id="label" class="labelValor">Valor</label>
+                    <input type="text" id="valor" name="valor" value="0" hidden/>
                 </div>
                 <div class="">
 
@@ -67,5 +67,37 @@
             <a href="/painel"><i class="fas fa-arrow-circle-left"></i></a>
         </div>
     </footer>
+
+    <script>
+        window.onload = function desabilitar()
+        {
+            document.getElementById("op").hidden = true;
+            document.getElementById("valor").value = '0';
+            // document.getElementById("checkbox").value = '1';
+        }
+
+        function validar()
+        {
+            let select = document.getElementById("tipo").value;
+            if(select == "Projeto")
+                document.getElementById("op").hidden = true;
+
+            else
+            {
+                document.getElementById("op").hidden = false;
+                document.getElementById("valor").hidden = false;
+                document.getElementById("valor").value = '';
+
+                // document.getElementById("label").hidden = true;
+            }
+        }
+
+        function check()
+        {
+            let check = document.getElementById("checkbox").value;
+            console.log(check);
+        }
+
+    </script>
 </body>
 </html>
