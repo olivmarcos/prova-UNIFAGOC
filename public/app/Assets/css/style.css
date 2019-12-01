@@ -7,6 +7,10 @@
     font-family: 'Alata', sans-serif;
 }
 
+html, body {
+    height: 100%;
+  }
+  
 header {
     font-size: 2rem;
     background-color: seagreen;
@@ -73,6 +77,38 @@ select {
     margin-left: 13.5rem;
 }
 
-#skill_input{
-    z-index: 100 !important;
-    }
+#login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 90vw;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.login-item {
+    margin-bottom: 1rem;
+}
+
+footer {
+    font-size: 2rem;
+    background-color: seagreen;
+    color: white;
+    padding: 2rem;
+    position: fixed;
+    bottom:0;
+    left:0;
+    width: 100%;
+    -webkit-box-shadow: -1px -4px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px -4px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px -4px 5px 0px rgba(0,0,0,0.75);
+}
+
+.titulo {
+    margin-bottom: 2rem;
+}
