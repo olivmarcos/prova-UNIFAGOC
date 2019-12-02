@@ -36,7 +36,7 @@
 
     <footer>
         <div class="icon">
-            <a href="/painel"><i class="fas fa-arrow-circle-left"></i></a>
+            <a href="/listar/inscricao"><i class="fas fa-arrow-circle-left"></i></a>
         </div>
     </footer>
 

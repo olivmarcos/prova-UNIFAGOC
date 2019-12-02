@@ -60,6 +60,9 @@ class Web {
         $dataNascimento = $_POST['data'];
         $cpf = $_POST['cpf'];
 
+        $date = explode("/",$dataNascimento);
+        $dataNascimento = $date[2].'-'.$date[1].'-'.$date[0];
+
         $cadastro = new AlunoController;
         if($cadastro->save($nome, $sexo, $dataNascimento, $cpf))
         {

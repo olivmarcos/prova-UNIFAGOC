@@ -29,11 +29,11 @@
                 </div>
                 <div class="sections">
                     <label for="" class="label">Data de Nascimento</label><br>
-                    <input type="text" name="data">
+                    <input type="text" name="data" placeholder="dd/mm/aa">
                 </div>
                 <div class="sections">
                     <label for="" class="label">CPF</label><br>
-                    <input type="text" name="cpf">
+                    <input type="text" name="cpf" placeholder="###.###.###-##">
                 </div>
             </div>
             <button>Enviar</button>
@@ -41,7 +41,7 @@
     </div>
     <footer>
         <div class="icon">
-            <a href="/painel"><i class="fas fa-arrow-circle-left"></i></a>
+            <a href="/listar/aluno"><i class="fas fa-arrow-circle-left"></i></a>
         </div>
     </footer>
 </body>

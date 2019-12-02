@@ -64,7 +64,7 @@
     </div>
     <footer>
         <div class="icon">
-            <a href="/painel"><i class="fas fa-arrow-circle-left"></i></a>
+            <a href="/listar/atividade"><i class="fas fa-arrow-circle-left"></i></a>
         </div>
     </footer>
 
