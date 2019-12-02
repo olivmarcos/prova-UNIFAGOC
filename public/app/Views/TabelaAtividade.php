@@ -15,7 +15,7 @@
         <div class="button">
         <a href="/cadastro/extensao"><button>Novo</button></a>
         </div>
-    <table id="tabela">
+    <table id="tabela" class="inscritos">
             <tr>
                 <th colspan="6"><h2>Atividades</h2></th>
             </tr>

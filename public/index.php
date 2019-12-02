@@ -13,7 +13,6 @@ $router->group(null);
 $router->get('/', 'Web:home');
 $router->post('/login', 'Web:login');
 $router->get('/painel', 'Web:painel');
-$router->get('/boleto', 'Web:geraBoleto');
 
 $router->group('select');
 $router->get('/aluno', 'Web:autocompleteAluno');
@@ -34,7 +33,6 @@ $router->get('/aluno', 'Web:listarAlunos');
 $router->get('/atividade', 'Web:listarAtividades');
 $router->get('/inscricao', 'Web:listarInscricoes');
 $router->get('/inscritos', 'Web:listarInscritos');
-
 
 $router->dispatch();
 

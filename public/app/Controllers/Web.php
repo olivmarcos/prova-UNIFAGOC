@@ -72,8 +72,6 @@ class Web {
 
     public function salvarExtensao()
     {
-        // var_dump($_POST);
-
         $titulo = $_POST['titulo'];
         $tipo = $_POST['tipo'];
         $responsavel = $_POST['responsavel'];
@@ -84,15 +82,18 @@ class Web {
         $gratuito = $_POST['gratuito'];
         $valor = $_POST['valor'];
 
-        if($tipo == "Projeto")
+        $date = explode("/",$data);
+        $data = $date[2].'-'.$date[1].'-'.$date[0];
+
+        if($tipo == "Projeto" || $gratuito == '1')
         {
-            $gratuito = '1';
             $valor = '0';
         }
 
         $cadastro = new AtividadeExtensaoController;
         if($cadastro->save($titulo, $tipo, $responsavel, $limite, $local, $data, $hora, $gratuito, $valor))
         {
+
             header('Location: /listar/atividade');
         }
         else {
@@ -186,15 +187,6 @@ class Web {
             "title" => "Nome - Site",
             "inscritos" => $inscritos
         ]);
-
-     
-    }
-
-    public function geraBoleto()
-    {
-        $inscricao = new InscricaoController;
-        $a = $inscricao->recoverInscricao(8);
-        var_dump($a);
     }
 
     public function error($data)

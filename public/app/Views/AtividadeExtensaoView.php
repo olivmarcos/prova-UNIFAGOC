@@ -41,16 +41,16 @@
                 </div>
                 <div class="sections">
                     <label for="" class="label">Data</label><br>
-                    <input type="text" name="data">
+                    <input type="text" name="data" placeholder="dd/mm/aa">
                 </div>
                 <div class="sections">
                     <label for="" class="label">Hora</label><br>
-                    <input type="text" name="hora">
+                    <input type="text" name="hora" placeholder="00:00">
                 </div>
                 <div id="op">
                     <label for="" id="labelG" class="label">Gratuito</label><br>
                     <input type="hidden" id="checkbox" name="gratuito" value="0" />
-                    <input type="checkbox" onclick="check()" class="" id="checkbox" name="gratuito" value="1" checked/>Sim
+                    <input type="checkbox" class="" id="checkbox" name="gratuito" value="1" checked/>Sim
 
                     <label for="" id="label" class="labelValor">Valor</label>
                     <input type="text" id="valor" name="valor" value="0" hidden/>
@@ -73,7 +73,6 @@
         {
             document.getElementById("op").hidden = true;
             document.getElementById("valor").value = '0';
-            // document.getElementById("checkbox").value = '1';
         }
 
         function validar()
@@ -87,15 +86,7 @@
                 document.getElementById("op").hidden = false;
                 document.getElementById("valor").hidden = false;
                 document.getElementById("valor").value = '';
-
-                // document.getElementById("label").hidden = true;
             }
-        }
-
-        function check()
-        {
-            let check = document.getElementById("checkbox").value;
-            console.log(check);
         }
 
     </script>

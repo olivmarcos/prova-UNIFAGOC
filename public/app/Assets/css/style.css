@@ -177,12 +177,16 @@ td {
     padding: 8px;
   }
   
-  #tabela tr:nth-child(even){background-color: #f2f2f2;}
+#tabela tr:nth-child(even){background-color: #f2f2f2;}
   
-  #tabela tr:hover {background-color: #ddd;}
+#tabela tr:hover {background-color: #ddd;}
   
-  #tabela th {
+#tabela th {
     text-align: left;
     background-color: seagreen;
     color: white;
   }
+
+.inscritos tr {
+    cursor: pointer;
+}
