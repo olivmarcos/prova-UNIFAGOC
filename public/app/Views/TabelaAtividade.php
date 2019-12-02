@@ -30,15 +30,15 @@
             <?php if($atividades):
             foreach($atividades as $atividade):
             {
-                ?>       
-                <tr>
-                    <td><?php echo $atividade['ate_id']; ?></td>
-                    <td><?php echo $atividade['ate_titulo']; ?></td>
+                ?>   
+               <tr onclick="redireciona(<?php echo $atividade['ate_id'];?>)">
+                    <td><?php echo $atividade['ate_id'];?></td>
+                    <td><?php echo $atividade['ate_titulo'];?></td>
                     <td><?php echo $atividade['ate_tipo']; ?></td>
                     <td><?php echo $atividade['ate_local']; ?></td>
                     <td><?php echo $atividade['ate_data']; ?></td>
                     <td><?php echo $atividade['ate_valor']; ?></td>
-                </tr>
+            </a></tr>
             <?php     
             }
         endforeach;
@@ -54,6 +54,13 @@
             <div class="icon">
                 <a href="/painel"><i class="fas fa-arrow-circle-left"></i></a>
             </div>
-        </footer>
+    </footer>
+
+    <script language='javascript' type='text/javascript'>
+       function redireciona(id)
+       {
+           window.location.href="/listar/inscritos?id=".concat(id);
+       }
+    </script>
 </body>
 </html>

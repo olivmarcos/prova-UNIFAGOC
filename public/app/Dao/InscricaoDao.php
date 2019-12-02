@@ -31,7 +31,14 @@ class InscricaoDao {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
-
+    public function recoverInscricao($id)
+    {
+        $stmt = $this->con->prepare("SELECT aln_id, aln_nome, aln_sexo, aln_dataNascimento, aln_cpf FROM TBL_INSCRICAO JOIN TBL_ALUNO on ins_ALN_ID = aln_id JOIN TBL_ATIVIDADE_EXTENSAO on ins_ATE_ID = ate_id WHERE ate_id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function recoverAll()
     {
         $stmt = $this->con->prepare("SELECT aln_id, aln_nome, aln_cpf, ate_titulo, ate_tipo, ate_valor FROM TBL_INSCRICAO

@@ -71,6 +71,11 @@ class InscricaoController {
         return $this->inscricaoDao->recoverAll();
     }
 
+    public function recoverInscricao($id)
+    {
+        return $this->inscricaoDao->recoverInscricao($id);
+    }
+
     public function recoverLast()
     {
         return $this->inscricaoDao->recoverLast();

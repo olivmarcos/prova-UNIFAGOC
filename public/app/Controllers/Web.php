@@ -177,13 +177,24 @@ class Web {
         ]);
     }
 
+    public function listarInscritos(): void
+    {
+        $id = $_GET['id'];
+        $inscritos = (new InscricaoController())->recoverInscricao($id);
+        
+        echo $this->view->render('TabelaInscricaoPorAtividade', [
+            "title" => "Nome - Site",
+            "inscritos" => $inscritos
+        ]);
+
+     
+    }
 
     public function geraBoleto()
     {
-        $boleto = (new InscricaoController())->verificaData(9);
-        $a = $boleto;
+        $inscricao = new InscricaoController;
+        $a = $inscricao->recoverInscricao(8);
         var_dump($a);
-        var_dump(date('Y-m-d'));
     }
 
     public function error($data)

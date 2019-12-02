@@ -33,6 +33,8 @@ $router->group('listar');
 $router->get('/aluno', 'Web:listarAlunos');
 $router->get('/atividade', 'Web:listarAtividades');
 $router->get('/inscricao', 'Web:listarInscricoes');
+$router->get('/inscritos', 'Web:listarInscritos');
+
 
 $router->dispatch();
 
