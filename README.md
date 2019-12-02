@@ -1,6 +1,6 @@
-### Instruções
+## Instruções
 
-## Para executar a aplicação faça os seguintes passos:
+### Para executar a aplicação faça os seguintes passos:
 
 * crie um arquivo env.ini e preencha-o como é mostrado no arquivo de exemplo env.sample.ini;
 
