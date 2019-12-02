@@ -190,3 +190,7 @@ td {
 .inscritos tr {
     cursor: pointer;
 }
+
+h4 {
+    color: red;
+}
