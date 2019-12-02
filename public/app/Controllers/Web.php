@@ -180,9 +180,10 @@ class Web {
 
     public function geraBoleto()
     {
-        $boleto = (new InscricaoController())->verificaGratuidade(3);
+        $boleto = (new InscricaoController())->verificaData(9);
         $a = $boleto;
         var_dump($a);
+        var_dump(date('Y-m-d'));
     }
 
     public function error($data)

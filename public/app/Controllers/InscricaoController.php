@@ -21,30 +21,36 @@ class InscricaoController {
         $inscricao->setAlunoId($alunoId);
         $inscricao->setAtividadeExtensaoId($atividadeId);
 
-        if($this->verificaLimite($atividadeId))
+        if (!$this->verificaData($atividadeId))
         {
-            if (!$this->verificaCpf($cpf, $atividadeId))
+            if($this->verificaLimite($atividadeId))
             {
-                if($this->verificaGratuidade($atividadeId))
+                if (!$this->verificaCpf($cpf, $atividadeId))
                 {
-                    $this->inscricaoDao->save($inscricao);
-                    echo "Registro realizado com sucesso";
-                    return;
+                    if($this->verificaGratuidade($atividadeId))
+                    {
+                        $this->inscricaoDao->save($inscricao);
+                        echo "Registro realizado com sucesso";
+                        return;
+                    }
+                    else 
+                    {
+                        $this->inscricaoDao->save($inscricao);
+                        $this->geraContasReceber($alunoId, $atividadeId);
+                        echo "Registro realizado com sucesso e Contas Receber criado";
+                        return;
+                    }
                 }
-                else 
-                {
-                    $this->inscricaoDao->save($inscricao);
-                    $this->geraContasReceber($alunoId, $atividadeId);
-                    echo "Registro realizado com sucesso e Contas Receber criado";
-                    return;
-                }
-            }
-            echo "CPF já inscrito!";
+                echo "CPF já inscrito!";
+                return;
+                
+            } 
+            echo "O limite de inscrição foi atigindo!";
             return;
-            
-        } 
-        echo "O limite de inscrição foi atigindo!";
+        }
+        echo "Não é possível fazer inscrição no dia da atividade de extensão";
         return;
+
     }
 
     public function verificaLimite($atividadeId)
@@ -91,6 +97,13 @@ class InscricaoController {
         $atividade = new AtividadeExtensaoController;
         $atv = $atividade->recoverById($atividadeId);
         return ($atv['ate_gratuito'] == 1);
+    }
+
+    public function verificaData($atividadeId)
+    {
+        $atividade = new AtividadeExtensaoController;
+        $atv = $atividade->recoverById($atividadeId);
+        return ($atv['ate_data'] == date('Y-m-d'));
     }
 
     public function geraBoleto($alunoId, $atividadeId)
