@@ -12,7 +12,12 @@
 
 </head>
 <body>
-    <header>Cadastro de Atividade de Extensão</header>
+    <header>
+        <p>Cadastro de Atividade de Extensão</p>
+        <div class="icon">
+            <a href="/painel"><i class="fas fa-home"></i></a>
+        </div>
+    </header>
 
     <div class="container">
         <form action="<?= url('salvar/extensao') ?>" class="formulario" method="post">

@@ -12,7 +12,12 @@
 
 </head>
 <body>
-    <header>Inscrição</header>
+    <header>
+        <p>Inscrição</p>
+        <div class="icon">
+            <a href="/painel"><i class="fas fa-home"></i></a>
+        </div>
+    </header>
 
     <div class="container">
         <form action="<?= url('salvar/inscricao') ?>" method="post" class="formulario">

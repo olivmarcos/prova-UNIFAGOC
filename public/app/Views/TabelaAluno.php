@@ -10,7 +10,12 @@
     <title>Document</title>
 </head>
 <body>
-<header></header>
+    <header>
+        <p>Alunos</p>
+        <div class="icon">
+            <a href="/painel"><i class="fas fa-home"></i></a>
+        </div>
+    </header>
     <div class="center">
         <div class="button">
         <a href="/cadastro/aluno"><button>Novo</button></a>
