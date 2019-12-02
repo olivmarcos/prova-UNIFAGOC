@@ -45,7 +45,7 @@
 
         else:
             ?>
-        <h4>N existe nada</h4>
+        <h4>Não há registros</h4>
         <?php    
         endif;?>
     </table>

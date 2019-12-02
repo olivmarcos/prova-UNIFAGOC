@@ -124,7 +124,7 @@ class Web {
             header('Location: /listar/inscricao');
         }
         else{
-            echo 'erro';
+            echo '<script> alert("erro")</script>';
         }
     }
 

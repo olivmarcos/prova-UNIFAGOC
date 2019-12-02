@@ -28,7 +28,7 @@ CREATE TABLE TBL_ATIVIDADE_EXTENSAO (
 
 INSERT INTO TBL_ATIVIDADE_EXTENSAO (ate_titulo, ate_tipo, ate_responsavel, ate_limite_inscricao, ate_local, ate_data, ate_hora, ate_gratuito, ate_valor)
 VALUES ('GAME PARTY', 'Projeto', 'Marcos Oliveira', 500, 'Unifagoc', '2019-12-12', '20:00', 1, 0),
-    ('Semana Acadêmica Computação', 'Projeto', 'Carlos Barreto', 250, 'Unifagoc', '2019-12-20', '19:00', 1, 0),
+    ('Semana Acadêmica Computação', 'Projeto', 'Carlos Barreto', 250, 'Unifagoc', '2019-12-20', '19:00', 0, 500.00),
     ('Desenvolvimento Android', 'Curso', 'Sérgio Murillo', 100, 'Unifagoc', '2020-02-12', '08:00', 0, 100.00),
     ('Manutenção de ComputadoresY', 'Curso', 'Joás Wesley', 50, 'Unifagoc', '2020-03-12', '10:00', 1, 0);
 
@@ -66,7 +66,7 @@ CREATE TABLE TBL_USUARIO (
 );
 
 INSERT INTO TBL_USUARIO (usu_nome, usu_password)
-VALUES ('Admin', 'admin'),
+VALUES  ('Admin', 'admin'),
         ('Saulo', 'saulo'),
         ('Matheus', 'mama'),
         ('Carlos', 'barreto');

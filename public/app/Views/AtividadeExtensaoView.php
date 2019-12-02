@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="<?= ASSET;?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 
 </head>
 <body>
@@ -59,7 +60,7 @@
 
                 </div>
             </div>
-            <button>Enviar</button>
+            <button type="submit">Enviar</button>
         </form>
     </div>
     <footer>
@@ -88,7 +89,6 @@
                 document.getElementById("valor").value = '';
             }
         }
-
     </script>
 </body>
 </html>
